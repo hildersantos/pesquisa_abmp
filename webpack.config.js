@@ -7,27 +7,33 @@ module.exports = {
         path: "./priv/static",
         filename: "js/app.js"
     },
-    loaders: [
-        {
-            test: /\.sass$/i,
-            loader: ExtractTextPlugin.extract("style", "css!sass?indentedSyntax")
-        },
-        {
-            test: /\.jsx?$/,
-            loader: 'babel',
-            exclude: /(node_modules|bower_components)/,
-            include: __dirname,
-            query: {
-                presets: ['es2015']
+    module: {
+        loaders: [
+            {
+                test: /\.sass$/,
+                loader: ExtractTextPlugin.extract("style", "css!sass?indentedSyntax!")
+            },
+            {
+                test: /\.jsx?$/,
+                loader: 'babel',
+                exclude: /(node_modules|bower_components|semantic)/,
+                include: __dirname,
+                query: {
+                    presets: ['es2015']
+                }
+            },
+            {
+                test: /\.(eot|woff|woff2|ttf|svg|png|jpg|gif)/,
+                loader: 'url-loader?limit=30000&name=[name]-[hash].[ext]'
             }
-        }
-    ],
-    extensions: ["", ".js", ".sass", ".jsx"],
+        ]
+    },
+    extensions: ["", ".js", ".sass", ".jsx", ".css"],
     plugins: [
         new ExtractTextPlugin("css/app.css"),
         new CopyWebpackPlugin([{from: "./web/static/assets"}])
     ],
     resolve: {
-        modulesDirectories: ["node_modules", __dirname + "/web/static/js"]
+        modulesDirectories: ["node_modules", __dirname + "/web/static/js", __dirname + "/web/static/vendor/semantic/dist"]
     }
 };
