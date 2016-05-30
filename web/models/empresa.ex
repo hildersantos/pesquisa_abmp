@@ -32,6 +32,7 @@ defmodule PesquisaABMP.Empresa do
   def changeset(model, params \\ :empty) do
     model
     |> cast(params, @required_fields, @optional_fields)
+    |> unique_constraint(:username)
     |> validate_length(:username, min: 1, max: 20)
   end
 
