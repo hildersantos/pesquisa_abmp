@@ -1,0 +1,17 @@
+<%= form_for @changeset, @action, [class: "ui form"],fn f -> %>
+  <%= if @changeset.action do %>
+    <div class="ui negative message">
+      <p>Algo deu errado. Confira os erros abaixo.</p>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= label f, :nome, class: "control-label" %>
+    <%= text_input f, :nome, class: "form-control" %>
+    <%= error_tag f, :nome %>
+  </div>
+
+  <div class="field">
+    <%= submit "Enviar", class: "ui button primary" %>
+  </div>
+<% end %>

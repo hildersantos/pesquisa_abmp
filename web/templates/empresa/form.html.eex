@@ -6,6 +6,12 @@
   <% end %>
 
  <div class="field">
+    <%= label f, :segmento_id, "Segmentos*", class: "control-label" %>
+    <%= select f, :segmento_id, segmentos  %>
+    <%= error_tag f, :segmento_id %>
+  </div>
+
+  <div class="field">
     <%= label f, :nome, "Nome da empresa*", class: "control-label" %>
     <%= text_input f, :nome, class: "form-control" %>
     <%= error_tag f, :nome %>
@@ -15,6 +21,12 @@
     <%= label f, :endereco, "Endereço", class: "control-label" %>
     <%= text_input f, :endereco, class: "form-control" %>
     <%= error_tag f, :endereco %>
+  </div>
+
+  <div class="field">
+    <%= label f, :cidade_id, "Cidade*", class: "control-label" %>
+    <%= select f, :cidade_id, cidades  %>
+    <%= error_tag f, :cidade_id %>
   </div>
 
   <div class="field">

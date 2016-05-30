@@ -1,0 +1,9 @@
+<div class="ui container">
+    <h2>Editando segmento</h2>
+
+    <%= render "form.html", changeset: @changeset,
+    action: segmento_path(@conn, :update, @segmento) %>
+
+    <%= link "Retornar para listagem", to: segmento_path(@conn, :index), class: "ui button" %>
+
+</div>

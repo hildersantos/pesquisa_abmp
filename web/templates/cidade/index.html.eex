@@ -1,0 +1,29 @@
+<div class="ui container">
+    <h2>Listando Cidades</h2>
+
+    <table class="ui table">
+        <thead>
+            <tr>
+                <th>Nome</th>
+
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <%= for cidade <- @cidades do %>
+                <tr>
+                    <td><%= cidade.nome %></td>
+
+                    <td class="acoes">
+                        <%= link "Visualizar", to: cidade_path(@conn, :show, cidade), class: "ui button" %>
+                        <%= link "Editar", to: cidade_path(@conn, :edit, cidade), class: "ui button" %>
+                        <%= link "Excluir", to: cidade_path(@conn, :delete, cidade), method: :delete, data: [confirm: "Você tem certeza?"], class: "ui button negative" %>
+                    </td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+
+    <%= link "Nova Cidade", to: cidade_path(@conn, :new), class: "ui large button primary" %>
+
+</div>

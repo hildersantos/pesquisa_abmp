@@ -1,0 +1,9 @@
+<div class="ui container">
+<h2>Nova Cidade</h2>
+
+<%= render "form.html", changeset: @changeset,
+                        action: cidade_path(@conn, :create) %>
+<br/>
+<%= link "Retornar para listagem", to: cidade_path(@conn, :index), class: "ui button" %>
+
+</div>

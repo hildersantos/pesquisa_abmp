@@ -1,0 +1,18 @@
+<div class="ui container">
+    <h2>Visualizar Cidade</h2>
+
+    <div class="ui segments">
+
+        <div class="ui segment">
+            <p>
+                <strong>Nome:</strong>
+                <%= @cidade.nome %>
+            </p>
+        </div>
+
+    </div>
+
+
+<%= link "Editar", to: cidade_path(@conn, :edit, @cidade), class: "ui primary button" %>
+<%= link "Retornar para listagem", to: cidade_path(@conn, :index), class: "ui button" %>
+</div>

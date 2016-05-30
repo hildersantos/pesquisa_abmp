@@ -1,0 +1,16 @@
+<div class="ui container">
+    <h2>Visualizando Segmento</h2>
+
+    <div class="ui segments">
+
+        <div class="ui segment">
+            <strong>Nome:</strong>
+            <%= @segmento.nome %>
+        </div>
+
+    </div>
+
+    <%= link "Editar", to: segmento_path(@conn, :edit, @segmento), class: "ui primary button" %>
+    <%= link "Retornar para listagem", to: segmento_path(@conn, :index), class: "ui button" %>
+
+</div>

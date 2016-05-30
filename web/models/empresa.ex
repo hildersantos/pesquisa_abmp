@@ -14,11 +14,13 @@ defmodule PesquisaABMP.Empresa do
     field :username, :string
     field :password, :string, virtual: true
     field :password_hash, :string
+    belongs_to :cidade, PesquisaABMP.Cidade
+    belongs_to :segmento, PesquisaABMP.Segmento
 
     timestamps
   end
 
-  @required_fields ~w(nome username)
+  @required_fields ~w(nome username cidade_id segmento_id)
   @optional_fields ~w(endereco cep telefone diretor1 diretor2 site email1 email2)
 
   @doc """
