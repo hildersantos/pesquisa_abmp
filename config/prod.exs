@@ -26,7 +26,12 @@ config :pesquisa_abmp, PesquisaABMP.Repo,
   ssl: true
 
 # Do not print debug messages in production
-config :logger, level: :info
+config :logger, format: "[$level] $message \n",
+  backends: [{LoggerFileBackend, :error_log}, :console]
+
+config :logger, :error_log,
+  path: "log/error.log",
+  level: :error
 
 # ## SSL Support
 #
