@@ -1,6 +1,9 @@
-<h2>Edit empresa</h2>
+<div class="ui container">
+<h2>Editar empresa</h2>
 
 <%= render "form.html", changeset: @changeset,
                         action: empresa_path(@conn, :update, @empresa) %>
+<br/>
+<%= link "Retornar para listagem", to: empresa_path(@conn, :index), class: "ui button" %>
 
-<%= link "Back", to: empresa_path(@conn, :index) %>
+</div>

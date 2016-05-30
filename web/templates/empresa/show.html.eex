@@ -1,48 +1,57 @@
-<h2>Show empresa</h2>
+<div class="ui container">
+<h2>Mostrando Empresa: <%= @empresa.nome %></h2>
 
-<ul>
+<div class="ui segments">
 
-  <li>
-    <strong>Endereco:</strong>
-    <%= @empresa.endereco %>
-  </li>
+    <div class="ui segment">
+        <p>
+            <strong>Nome:</strong> <%= @empresa.nome %>
+        </p>
+    </div>
+    <div class="ui segment">
+        <p>
+            <strong>Endereço:</strong> <%= @empresa.endereco %>
+        </p>
+    </div>
+    <div class="ui segment">
+        <p>
+            <strong>CEP:</strong> <%= @empresa.cep %>
+        </p>
+    </div>
+    <div class="ui segment">
+        <p>
+            <strong>Telefone:</strong> <%= @empresa.telefone %>
+        </p>
+    </div>
+    <div class="ui segment">
+        <p>
+            <strong>Diretor 1:</strong> <%= @empresa.diretor1 %>
+        </p>
+    </div>
+    <div class="ui segment">
+        <p>
+            <strong>Diretor 2:</strong> <%= @empresa.diretor2 %>
+        </p>
+    </div>
+    <div class="ui segment">
+        <p>
+            <strong>Email 1:</strong> <%= @empresa.email1 %>
+        </p>
+    </div>
+    <div class="ui segment">
+        <p>
+            <strong>Email 2:</strong> <%= @empresa.email2 %>
+        </p>
+    </div>
+    <div class="ui segment">
+        <p>
+            <strong>Site:</strong> <%= @empresa.site %>
+        </p>
+    </div>
 
-  <li>
-    <strong>Cep:</strong>
-    <%= @empresa.cep %>
-  </li>
+</div>
 
-  <li>
-    <strong>Telefone:</strong>
-    <%= @empresa.telefone %>
-  </li>
+<%= link "Editar", to: empresa_path(@conn, :edit, @empresa), class: "ui primary button" %>
+<%= link "Retornar para listagem", to: empresa_path(@conn, :index), class: "ui button" %>
 
-  <li>
-    <strong>Diretor1:</strong>
-    <%= @empresa.diretor1 %>
-  </li>
-
-  <li>
-    <strong>Diretor2:</strong>
-    <%= @empresa.diretor2 %>
-  </li>
-
-  <li>
-    <strong>Site:</strong>
-    <%= @empresa.site %>
-  </li>
-
-  <li>
-    <strong>Email1:</strong>
-    <%= @empresa.email1 %>
-  </li>
-
-  <li>
-    <strong>Email2:</strong>
-    <%= @empresa.email2 %>
-  </li>
-
-</ul>
-
-<%= link "Edit", to: empresa_path(@conn, :edit, @empresa) %>
-<%= link "Back", to: empresa_path(@conn, :index) %>
+</div>

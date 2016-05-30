@@ -1,6 +1,7 @@
 defmodule PesquisaABMP.EmpresaController do
   use PesquisaABMP.Web, :controller
 
+#  plug :authenticate when action in [:index, :show]
   alias PesquisaABMP.Empresa
 
   plug :scrub_params, "empresa" when action in [:create, :update]
@@ -16,12 +17,12 @@ defmodule PesquisaABMP.EmpresaController do
   end
 
   def create(conn, %{"empresa" => empresa_params}) do
-    changeset = Empresa.changeset(%Empresa{}, empresa_params)
+    changeset = Empresa.registration_changeset(%Empresa{}, empresa_params)
 
     case Repo.insert(changeset) do
-      {:ok, _empresa} ->
+      {:ok, empresa} ->
         conn
-        |> put_flash(:info, "Empresa created successfully.")
+        |> put_flash(:info, "#{empresa.nome} criada!")
         |> redirect(to: empresa_path(conn, :index))
       {:error, changeset} ->
         render(conn, "new.html", changeset: changeset)
@@ -46,7 +47,7 @@ defmodule PesquisaABMP.EmpresaController do
     case Repo.update(changeset) do
       {:ok, empresa} ->
         conn
-        |> put_flash(:info, "Empresa updated successfully.")
+        |> put_flash(:info, "#{empresa.nome} atualizada!")
         |> redirect(to: empresa_path(conn, :show, empresa))
       {:error, changeset} ->
         render(conn, "edit.html", empresa: empresa, changeset: changeset)
@@ -61,7 +62,18 @@ defmodule PesquisaABMP.EmpresaController do
     Repo.delete!(empresa)
 
     conn
-    |> put_flash(:info, "Empresa deleted successfully.")
+    |> put_flash(:info, "#{empresa.nome} excluída com sucesso.")
     |> redirect(to: empresa_path(conn, :index))
+  end
+
+  defp authenticate(conn, _opts) do
+    if conn.assigns.current_user do
+      conn
+    else
+      conn
+      |> put_flash(:error, "Você precisa estar logado para ver esta página.")
+      |> redirect(to: page_path(conn, :index))
+      |> halt()
+    end
   end
 end

@@ -1,40 +1,39 @@
-<h2>Listing empresas</h2>
+<div class="ui container">
+ <h2>Empresas cadastradas</h2>
 
-<table class="table">
+<table class="ui table">
   <thead>
     <tr>
-      <th>Endereco</th>
-      <th>Cep</th>
+      <th>Nome</th>
       <th>Telefone</th>
       <th>Diretor1</th>
       <th>Diretor2</th>
-      <th>Site</th>
       <th>Email1</th>
       <th>Email2</th>
 
-      <th></th>
+      <th>Ações</th>
     </tr>
   </thead>
   <tbody>
 <%= for empresa <- @empresas do %>
     <tr>
-      <td><%= empresa.endereco %></td>
-      <td><%= empresa.cep %></td>
+      <td><%= empresa.nome %></td>
       <td><%= empresa.telefone %></td>
       <td><%= empresa.diretor1 %></td>
       <td><%= empresa.diretor2 %></td>
-      <td><%= empresa.site %></td>
       <td><%= empresa.email1 %></td>
       <td><%= empresa.email2 %></td>
 
-      <td class="text-right">
-        <%= link "Show", to: empresa_path(@conn, :show, empresa), class: "btn btn-default btn-xs" %>
-        <%= link "Edit", to: empresa_path(@conn, :edit, empresa), class: "btn btn-default btn-xs" %>
-        <%= link "Delete", to: empresa_path(@conn, :delete, empresa), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+      <td class="acoes">
+        <%= link "Visualizar", to: empresa_path(@conn, :show, empresa), class: "ui button" %>
+        <%= link "Editar", to: empresa_path(@conn, :edit, empresa), class: "ui button" %>
+        <%= link "Excluir", to: empresa_path(@conn, :delete, empresa), method: :delete, data: [confirm: "Você tem certeza?"], class: "ui button negative" %>
       </td>
     </tr>
 <% end %>
   </tbody>
 </table>
 
-<%= link "New empresa", to: empresa_path(@conn, :new) %>
+<%= link "Nova empresa", to: empresa_path(@conn, :new), class: "ui large button primary" %>
+
+</div>

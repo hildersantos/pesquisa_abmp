@@ -1,0 +1,13 @@
+<div class="ui text container">
+    <h4 class="ui header">Login</h4>
+
+    <%= form_for @conn, sessao_path(@conn, :create), [as: :sessao, class: "ui form"], fn f -> %>
+    <div class="field">
+        <%= text_input f, :username, placeholder: "Usuário" %>
+    </div>
+    <div class="field">
+        <%= password_input f, :password, placeholder: "Senha" %>
+    </div>
+    <%= submit "Login", class: "ui button primary" %>
+    <% end %>
+</div>

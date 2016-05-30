@@ -21,7 +21,12 @@
           </div>
           <div class="right menu">
               <div class="item">
-                  <%= link("Login", to: "/login", class: "ui primary button btn-login") %>
+                <%= if @current_user do %>
+                    <%= link("Visualizar/Cadastrar Empresas", to: empresa_path(@conn, :index), class: "ui positive button") %>
+                    <%= link("Logout", to: sessao_path(@conn, :delete, @current_user), method: "delete", class: "ui primary button btn-login") %>
+                <% else %>
+                    <%= link("Login", to: "/sessoes/new", class: "ui primary button btn-login") %>
+                <% end %>
               </div>
           </div>
       </div>

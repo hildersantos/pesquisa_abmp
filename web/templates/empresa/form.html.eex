@@ -1,59 +1,77 @@
-<%= form_for @changeset, @action, fn f -> %>
+<%= form_for @changeset, @action, [class: "ui form"], fn f -> %>
   <%= if @changeset.action do %>
-    <div class="alert alert-danger">
-      <p>Oops, something went wrong! Please check the errors below.</p>
+    <div class="ui negative message">
+      <p>Algo deu errado. Confira os erros abaixo.</p>
     </div>
   <% end %>
 
-  <div class="form-group">
-    <%= label f, :endereco, class: "control-label" %>
+ <div class="field">
+    <%= label f, :nome, "Nome da empresa*", class: "control-label" %>
+    <%= text_input f, :nome, class: "form-control" %>
+    <%= error_tag f, :nome %>
+  </div>
+
+  <div class="field">
+    <%= label f, :endereco, "Endereço", class: "control-label" %>
     <%= text_input f, :endereco, class: "form-control" %>
     <%= error_tag f, :endereco %>
   </div>
 
-  <div class="form-group">
-    <%= label f, :cep, class: "control-label" %>
+  <div class="field">
+    <%= label f, :cep, "CEP", class: "control-label" %>
     <%= text_input f, :cep, class: "form-control" %>
     <%= error_tag f, :cep %>
   </div>
 
-  <div class="form-group">
+  <div class="field">
     <%= label f, :telefone, class: "control-label" %>
     <%= text_input f, :telefone, class: "form-control" %>
     <%= error_tag f, :telefone %>
   </div>
 
-  <div class="form-group">
-    <%= label f, :diretor1, class: "control-label" %>
+  <div class="field">
+    <%= label f, :diretor1, "Diretor 1", class: "control-label" %>
     <%= text_input f, :diretor1, class: "form-control" %>
     <%= error_tag f, :diretor1 %>
   </div>
 
-  <div class="form-group">
-    <%= label f, :diretor2, class: "control-label" %>
+  <div class="field">
+    <%= label f, :diretor2, "Diretor 2", class: "control-label" %>
     <%= text_input f, :diretor2, class: "form-control" %>
     <%= error_tag f, :diretor2 %>
   </div>
 
-  <div class="form-group">
-    <%= label f, :site, class: "control-label" %>
+  <div class="field">
+    <%= label f, :site, "Site", class: "control-label" %>
     <%= text_input f, :site, class: "form-control" %>
     <%= error_tag f, :site %>
   </div>
 
-  <div class="form-group">
-    <%= label f, :email1, class: "control-label" %>
+  <div class="field">
+    <%= label f, :email1, "Email 1", class: "control-label" %>
     <%= text_input f, :email1, class: "form-control" %>
     <%= error_tag f, :email1 %>
   </div>
 
-  <div class="form-group">
-    <%= label f, :email2, class: "control-label" %>
+  <div class="field">
+    <%= label f, :email2, "Email 2", class: "control-label" %>
     <%= text_input f, :email2, class: "form-control" %>
     <%= error_tag f, :email2 %>
   </div>
 
-  <div class="form-group">
-    <%= submit "Submit", class: "btn btn-primary" %>
+  <div class="field">
+    <%= label f, :username, "Nome de usuário*", class: "control-label" %>
+    <%= text_input f, :username, placeholder: "Escolha um nome de usuário para esta empresa", class: "form-control" %>
+    <%= error_tag f, :username %>
+  </div>
+
+   <div class="field">
+    <%= label f, :password, "Senha*", class: "control-label" %>
+    <%= password_input f, :password, placeholder: "Digite uma senha para esta empresa, ex: temporaria123", class: "form-control" %>
+    <%= error_tag f, :password %>
+  </div>
+
+  <div class="field">
+    <%= submit "Enviar", class: "ui button primary" %>
   </div>
 <% end %>
