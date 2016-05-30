@@ -12,17 +12,27 @@
   </head>
 
   <body>
-    <div class="container">
-
-
-      <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
-
+      <div class="ui attached menu inverted">
+          <div class="item">
+              <img alt="" src="<%= static_path(@conn, "/images/marca-abmp.png") %>"/>
+          </div>
+          <div class="header item">
+              Pesquisa ABMP
+          </div>
+          <div class="right menu">
+              <div class="item">
+                  <%= link("Login", to: "/login", class: "ui primary button btn-login") %>
+              </div>
+          </div>
+      </div>
+    <div class="ui container">
+        <div class="ui info message"><%= get_flash(@conn, :info) %></div>
+        <div class="ui negative message"><%= get_flash(@conn, :error) %></div>
+    </div> <!-- /container -->
       <main role="main">
         <%= render @view_module, @view_template, assigns %>
       </main>
 
-    </div> <!-- /container -->
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
   </body>
 </html>

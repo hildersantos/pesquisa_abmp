@@ -1,1 +1,61 @@
-Página Principal
+<div class="hero">
+    <div class="ui text container center aligned">
+        <h1 class="ui header">
+            Participe da Pesquisa da ABMP
+        </h1>
+        <p>
+            A <strong>Associação Baiana do Mercado Publicitário</strong> está realizando uma pesquisa-diagnóstico do mercado baiano de comunicação e contamos com o seu apoio para realizá-la.
+        </p>
+        <p>
+            Nenhuma informação de sua empresa será divulgada: todos os dados serão tabulados por segmento ou área de atuação.
+        </p>
+        <p>
+            <a class="ui primary huge button" href="">Iniciar Pesquisa</a>
+        </p>
+    </div>
+</div>
+<div class="ui container home">
+    <h2 class="ui header">Sobre a Pesquisa
+        <div class="sub header">
+            Saiba mais sobre a pesquisa da ABMP
+        </div>
+    </h2>
+    <div class="ui divider"></div>
+<p>Prezado,</p>
+
+<p>
+    A Associação Baiana do Mercado Publicitário-ABMP está realizando uma pesquisa-
+    diagnóstico do mercado baiano de comunicação que oportunamente será
+    disponibilizada em nosso site (www.abmp.com.br ). A ABMP é uma entidade de classe
+    com 18 anos de atuação que reúne empresas de diversas categorias de empresas de
+    comunicação sediadas na Bahia.
+</p>
+
+<p>
+    Esperamos contar com o seu apoio, através do preenchimento do questionário em
+    anexo, e desde já esclarecemos que os dados informados serão tabulados por
+    segmento de área de atuação, ou ramo de atividade. Não será publicada, portanto,
+    nenhuma informação específica das empresas.
+</p>
+
+<p>
+    O objetivo deste projeto é fundamentar a importância do mercado de comunicação da
+    Bahia no contexto do PIB baiano como gerador de renda, empregos e tributos. E com
+    base nessas informações propor junto aos órgãos governamentais ações efetivas em
+    benefício do setor.
+</p>
+
+<p>
+    A pesquisa abrange o mercado de comunicação de Salvador e interior do estado e
+    compreende agências de propaganda, agências de promo, agências digitais, veículos
+    de comunicação e fornecedores de serviços de comunicação.
+</p>
+
+<p>Desde já agradecemos a sua prestimosa colaboração</p>
+
+<p>Atenciosamente</p>
+
+<p><strong>João Gomes</strong>
+    <br/>
+    <em>Presidente</em></p>
+</div>
