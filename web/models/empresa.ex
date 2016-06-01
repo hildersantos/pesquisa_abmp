@@ -21,7 +21,7 @@ defmodule PesquisaABMP.Empresa do
   end
 
   @required_fields ~w(nome username cidade_id segmento_id)
-  @optional_fields ~w(endereco cep telefone diretor1 diretor2 site email1 email2)
+  @optional_fields ~w(endereco cep telefone diretor1 diretor2 site email1 email2 password)
 
   @doc """
   Creates a changeset based on the `model` and `params`.
@@ -34,14 +34,14 @@ defmodule PesquisaABMP.Empresa do
     |> cast(params, @required_fields, @optional_fields)
     |> unique_constraint(:username)
     |> validate_length(:username, min: 1, max: 20)
+    |> validate_length(:password, min: 6, max: 100)
+    |> put_pass_hash()
   end
 
   def registration_changeset(model, params) do
     model
     |> changeset(params)
     |> cast(params, ~w(password), [])
-    |> validate_length(:password, min: 6, max: 100)
-    |> put_pass_hash()
   end
 
   defp put_pass_hash(changeset) do
