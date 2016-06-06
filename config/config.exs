@@ -9,6 +9,10 @@ use Mix.Config
 config :pesquisa_abmp,
   app_namespace: PesquisaABMP
 
+# Configures Scrivener HTML
+config :scrivener_html,
+  routes_helper: PesquisaABMP.Router.Helpers
+
 # Configures the endpoint
 config :pesquisa_abmp, PesquisaABMP.Endpoint,
   url: [host: "localhost"],

@@ -22,6 +22,7 @@ defmodule PesquisaABMP.Router do
     resources "/sessoes", SessaoController, only: [:new, :create, :delete]
     resources "/cidades", CidadeController
     resources "/segmentos", SegmentoController
+    resources "/questionarios", QuestionarioController
   end
 
   # Other scopes may use custom stacks.

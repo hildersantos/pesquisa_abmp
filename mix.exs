@@ -38,6 +38,8 @@ defmodule PesquisaABMP.Mixfile do
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:logger_file_backend, "~> 0.0.8"},
      {:gettext, "~> 0.9"},
+     {:scrivener, "~> 1.0"},
+     {:scrivener_html, "~> 1.1"},
      {:cowboy, "~> 1.0"}]
   end
 

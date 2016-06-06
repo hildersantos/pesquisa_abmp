@@ -5,11 +5,8 @@
   <thead>
     <tr>
       <th>Nome</th>
+      <th>Segmento</th>
       <th>Telefone</th>
-      <th>Diretor1</th>
-      <th>Diretor2</th>
-      <th>Email1</th>
-      <th>Email2</th>
 
       <th>Ações</th>
     </tr>
@@ -18,12 +15,8 @@
 <%= for empresa <- @empresas do %>
     <tr>
       <td><%= empresa.nome %></td>
+      <td><%= empresa.segmento.nome %></td>
       <td><%= empresa.telefone %></td>
-      <td><%= empresa.diretor1 %></td>
-      <td><%= empresa.diretor2 %></td>
-      <td><%= empresa.email1 %></td>
-      <td><%= empresa.email2 %></td>
-
       <td class="acoes">
         <%= link "Visualizar", to: empresa_path(@conn, :show, empresa), class: "ui button" %>
         <%= link "Editar", to: empresa_path(@conn, :edit, empresa), class: "ui button" %>
@@ -35,5 +28,8 @@
 </table>
 
 <%= link "Nova empresa", to: empresa_path(@conn, :new), class: "ui large button primary" %>
-
+</div>
+<div class="ui container paginacao">
+        <h5>Paginação:</h5>
+    <%= pagination_links @conn, @empresas_pages, view_style: :semantic %>
 </div>

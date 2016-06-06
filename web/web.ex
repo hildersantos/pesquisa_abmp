@@ -52,6 +52,7 @@ defmodule PesquisaABMP.Web do
       import PesquisaABMP.Router.Helpers
       import PesquisaABMP.ErrorHelpers
       import PesquisaABMP.Gettext
+      import Scrivener.HTML
     end
   end
 
