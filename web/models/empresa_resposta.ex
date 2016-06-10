@@ -1,17 +1,17 @@
-defmodule PesquisaABMP.Segmento do
+defmodule PesquisaABMP.EmpresaResposta do
   use PesquisaABMP.Web, :model
 
-  schema "segmentos" do
-    field :nome, :string
+  schema "empresas_respostas" do
+    field :replica, :string
 
-    belongs_to :questionario, PesquisaABMP.Questionario
-    has_many :empresas, PesquisaABMP.Empresa
+    belongs_to :resposta, PesquisaABMP.Resposta
+    belongs_to :empresa, PesquisaABMP.Empresa
 
     timestamps
   end
 
-  @required_fields ~w(nome)
-  @optional_fields ~w(questionario_id)
+  @required_fields ~w(empresa_id)
+  @optional_fields ~w(replica resposta_id)
 
   @doc """
   Creates a changeset based on the `model` and `params`.

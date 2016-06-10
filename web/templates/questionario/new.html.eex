@@ -1,0 +1,74 @@
+<div id="root">
+    <div class="ui container">
+        <h2>Novo Questionário</h2>
+        <form class="ui form">
+            <div class="field">
+                <label for="questionario_nome">Nome do Questionário</label>
+                <input id="questionario_nome" name="questionario[nome]" type="text" v-model="questionario.nome" placeholder="Nome do Questionário" />
+            </div>
+            <div v-for="pergunta in questionario.perguntas">
+                <br/>
+                <h4>Pergunta {{ $index  + 1 }}</h4>
+                <div class="field">
+                    <label>Título da Pergunta</label>
+                    <input type="text" v-model="pergunta.pergunta" placeholder="Título da pergunta" />
+                </div>
+                <div class="field">
+                    <label>Observações</label>
+                    <textarea cols="30" v-model="pergunta.observacao" rows="5" placeholder="Digite observações sobre a pergunta">
+
+                    </textarea>
+                </div>
+                <div class="grouped fields">
+                    <label>Tipo das respostas</label>
+                    <div class="field">
+                        <div class="ui radio checkbox">
+                            <input type="radio" value="input" id="questionario_pergunta_tipo_input" v-model="pergunta.tipo"/><label for="questionario_pergunta_tipo_input">Input</label>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui radio checkbox">
+                            <input type="radio" value="radio" id="questionario_pergunta_tipo_radio" v-model="pergunta.tipo"/><label for="questionario_pergunta_tipo_radio">Radio</label>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui radio checkbox">
+                            <input type="radio" value="checkbox" id="questionario_pergunta_tipo_checkbox" v-model="pergunta.tipo"/><label for="questionario_pergunta_tipo_checkbox">Checkbox</label>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui radio checkbox">
+                            <input type="radio" value="select" id="questionario_pergunta_tipo_select" v-model="pergunta.tipo"/><label for="questionario_pergunta_tipo_select">Select</label>
+                        </div>
+                    </div>
+                </div>
+                <h5>Respostas</h5>
+                    <div v-for="resposta in pergunta.respostas">
+                        <br/>
+                        <div class="field">
+                            <label>Resposta {{ $index + 1 }}</label>
+                            <div class="ui action input">
+                                <input type="text" v-model="resposta.resposta" placeholder="Digite uma resposta pré-definida"/>
+                                <button class="ui red icon button" type="button" @click="removeresposta($parent.$index, $index, $event)">
+                                    <i class="minus icon"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="field">
+                        <button class="ui button" type="button" @click="addresposta($index, $event)">
+                            Adicionar Resposta
+                        </button>
+                    </div>
+            </div>
+            <br/>
+            <div class="field">
+                <button class="ui button primary" type="button" @click="addpergunta">Adicionar Pergunta</button>
+            </div>
+            <div class="field">
+                <button class="ui button green large" type="button" @click="submitform">Enviar Formulário</button>
+            </div>
+        </form>
+    </div>
+</div>

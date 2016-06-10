@@ -1,17 +1,16 @@
-defmodule PesquisaABMP.Segmento do
+defmodule PesquisaABMP.Questionario do
   use PesquisaABMP.Web, :model
 
-  schema "segmentos" do
+  schema "questionarios" do
     field :nome, :string
-
-    belongs_to :questionario, PesquisaABMP.Questionario
-    has_many :empresas, PesquisaABMP.Empresa
+    has_many :segmentos, PesquisaABMP.Segmento
+    has_many :perguntas, PesquisaABMP.Pergunta, on_delete: :delete_all, on_replace: :delete
 
     timestamps
   end
 
   @required_fields ~w(nome)
-  @optional_fields ~w(questionario_id)
+  @optional_fields ~w()
 
   @doc """
   Creates a changeset based on the `model` and `params`.
@@ -22,5 +21,6 @@ defmodule PesquisaABMP.Segmento do
   def changeset(model, params \\ :empty) do
     model
     |> cast(params, @required_fields, @optional_fields)
+    |> cast_assoc(:perguntas)
   end
 end

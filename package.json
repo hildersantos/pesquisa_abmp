@@ -7,10 +7,12 @@
     "test": "test"
   },
   "dependencies": {
+    "axios": "^0.12.0",
     "jquery": "^2.2.4",
     "phoenix": "file:deps/phoenix",
     "phoenix_html": "file:deps/phoenix_html",
-    "semantic-ui": "^2.1.8"
+    "semantic-ui": "^2.1.8",
+    "vue": "^1.0.24"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.6",

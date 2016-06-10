@@ -1,7 +1,7 @@
 defmodule PesquisaABMP.EmpresaController do
   use PesquisaABMP.Web, :controller
 
-#  plug :authenticate when action in [:index, :show]
+  plug :authenticate when action in [:index, :show]
   alias PesquisaABMP.Empresa
 
   plug :scrub_params, "empresa" when action in [:create, :update]
@@ -76,4 +76,5 @@ defmodule PesquisaABMP.EmpresaController do
       |> halt()
     end
   end
+
 end

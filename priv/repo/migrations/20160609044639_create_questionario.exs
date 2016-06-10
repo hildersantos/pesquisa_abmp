@@ -1,11 +1,12 @@
-defmodule PesquisaABMP.Repo.Migrations.AddSurveyTable do
+defmodule PesquisaABMP.Repo.Migrations.CreateQuestionario do
   use Ecto.Migration
 
   def change do
     create table(:questionarios) do
-      add :name, :string
+      add :nome, :string
 
       timestamps
     end
+
   end
 end

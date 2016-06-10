@@ -13,6 +13,12 @@
     </div>
 
     <div class="field">
+        <%= label f, :questionario_id, class: "control-label" %>
+        <%= select f, :questionario_id, @questionarios %>
+        <%= error_tag f, :questionario_id %>
+    </div>
+
+    <div class="field">
         <%= submit "Enviar", class: "ui button primary" %>
     </div>
 <% end %>

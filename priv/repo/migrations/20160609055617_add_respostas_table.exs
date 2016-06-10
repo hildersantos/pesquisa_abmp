@@ -1,4 +1,4 @@
-defmodule PesquisaABMP.Repo.Migrations.AddRespostaTable do
+defmodule PesquisaABMP.Repo.Migrations.AddRespostasTable do
   use Ecto.Migration
 
   def change do

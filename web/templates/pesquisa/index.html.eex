@@ -1,0 +1,44 @@
+<script type="text/javascript">
+ empresa_id = <%= @empresa.id %>;
+</script>
+<div class="ui container pesquisa" id="pesquisa">
+    <div class="ui segments">
+        <div class="ui segment"><div class="ui segments" v-for="pergunta in questionario.perguntas">
+        <div class="ui segment blue inverted">
+            <h5 class="ui header">
+                <div class="content">
+                    {{pergunta.pergunta}}
+                    <div class="sub header">
+                        {{pergunta.observacao}}
+                    </div>
+                </div>
+            </h5>
+        </div>
+        <div class="ui segment">
+            <form class="ui form" action="">
+                <div class="grouped field">
+                    <div v-for="resposta in pergunta.respostas">
+                        <div class="field">
+                            <template v-if="pergunta.tipo == 'radio'">
+                            <div class="ui radio checkbox">
+                                <input type="radio" v-model="empresas_respostas[].resposta_id" value="{{resposta.id}}" />
+                                <label>{{resposta.resposta}}</label>
+                            </div>
+                            </template>
+                            <template v-if="pergunta.tipo == 'input'">
+                                <label>{{resposta.resposta}}</label>
+                                <input type="hidden" v-model="empresas_respostas[].resposta_id" value="{{resposta.id}}"/>
+                                <input type="text" v-model="empresas_respostas[].replica"/>
+                            </template>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        </div></div>
+        <div class="ui segment right aligned">
+            <a class="ui button large" href="">Próxima Pergunta</a>
+        </div>
+    </div>
+</div>

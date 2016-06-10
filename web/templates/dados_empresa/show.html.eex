@@ -1,0 +1,88 @@
+<h2>Show dados empresa</h2>
+
+<ul>
+
+  <li>
+    <strong>Empresa:</strong>
+    <%= @dados_empresa.empresa_id %>
+  </li>
+
+  <li>
+    <strong>Cidade:</strong>
+    <%= @dados_empresa.cidade_id %>
+  </li>
+
+  <li>
+    <strong>Nome:</strong>
+    <%= @dados_empresa.nome %>
+  </li>
+
+  <li>
+    <strong>Segmento:</strong>
+    <%= @dados_empresa.segmento_id %>
+  </li>
+
+  <li>
+    <strong>Filial:</strong>
+    <%= @dados_empresa.filial %>
+  </li>
+
+  <li>
+    <strong>Endereco:</strong>
+    <%= @dados_empresa.endereco %>
+  </li>
+
+  <li>
+    <strong>Telefone:</strong>
+    <%= @dados_empresa.telefone %>
+  </li>
+
+  <li>
+    <strong>Site:</strong>
+    <%= @dados_empresa.site %>
+  </li>
+
+  <li>
+    <strong>Facebook:</strong>
+    <%= @dados_empresa.facebook %>
+  </li>
+
+  <li>
+    <strong>Twitter:</strong>
+    <%= @dados_empresa.twitter %>
+  </li>
+
+  <li>
+    <strong>Instagram:</strong>
+    <%= @dados_empresa.instagram %>
+  </li>
+
+  <li>
+    <strong>Num funcionarios:</strong>
+    <%= @dados_empresa.num_funcionarios %>
+  </li>
+
+  <li>
+    <strong>Num socios:</strong>
+    <%= @dados_empresa.num_socios %>
+  </li>
+
+  <li>
+    <strong>Num func homens:</strong>
+    <%= @dados_empresa.num_func_homens %>
+  </li>
+
+  <li>
+    <strong>Num func mulheres:</strong>
+    <%= @dados_empresa.num_func_mulheres %>
+  </li>
+
+  <li>
+    <strong>Tempo atividade:</strong>
+    <%= @dados_empresa.tempo_atividade %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: dados_empresa_path(@conn, :edit, @dados_empresa) %>
+<%= link "Back", to: dados_empresa_path(@conn, :index) %>
