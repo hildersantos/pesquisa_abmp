@@ -9,9 +9,9 @@
         <p>
             Nenhuma informação de sua empresa será divulgada: todos os dados serão tabulados por segmento ou área de atuação.
         </p>
-        <p>
-            <a class="ui primary huge button" href="">Iniciar Pesquisa</a>
-        </p>
+        <!-- <p> -->
+        <!-- <a class="ui primary huge button" href="">Iniciar Pesquisa</a> -->
+        <!-- </p> -->
     </div>
 </div>
 <div class="ui container home">
