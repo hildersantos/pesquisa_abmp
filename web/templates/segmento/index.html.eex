@@ -14,7 +14,8 @@
             <%= for segmento <- @segmentos do %>
                 <tr>
                     <td><%= segmento.nome %></td>
-                    <td><%= segmento.questionario.nome %></td>
+                    <td><%=if segmento.questionario.nome, do: segmento.questionario.nome %>
+                    </td>
 
                     <td class="acoes">
                         <%= link "Visualizar", to: segmento_path(@conn, :show, segmento), class: "ui button" %>
