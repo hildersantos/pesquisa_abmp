@@ -21,6 +21,7 @@ defmodule PesquisaABMP.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
+    get "/final", PageController, :final
     get "/pesquisa", PesquisaController, :index
     resources "/empresas", EmpresaController
     resources "/sessoes", SessaoController, only: [:new, :create, :delete]
@@ -35,6 +36,8 @@ defmodule PesquisaABMP.Router do
     pipe_through :api
 
     resources "/questionarios", QuestionarioController, except: [:new, :edit]
+    resources "/empresas_respostas", EmpresaRespostaController, except: [:new, :edit]
+    post "/empresas_respostas/responses", EmpresaRespostaController, :create_all
     get "/empresas/:id/questionario", QuestionarioController, :questionario_empresa
   end
 end

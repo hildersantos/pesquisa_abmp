@@ -8,7 +8,7 @@
             </div>
             <div v-for="pergunta in questionario.perguntas">
                 <br/>
-                <h4>Pergunta {{ $index  + 1 }}</h4>
+                <h4>Pergunta {{ $index  + 1 }} <a class="ui button negative tiny" href="#" @click="removepergunta($index, $event)">Excluir</a> </h4>
                 <div class="field">
                     <label>Título da Pergunta</label>
                     <input type="text" v-model="pergunta.pergunta" placeholder="Título da pergunta" />
@@ -49,7 +49,7 @@
                             <label>Resposta {{ $index + 1 }}</label>
                             <div class="ui action input">
                                 <input type="text" v-model="resposta.resposta" placeholder="Digite uma resposta pré-definida"/>
-                                <button class="ui red icon button" type="button" @click="removeresposta($parent.$index, $index, $event)">
+                                <button class="ui negative icon button" type="button" @click="removeresposta($parent.$index, $index, $event)">
                                     <i class="minus icon"></i>
                                 </button>
                             </div>

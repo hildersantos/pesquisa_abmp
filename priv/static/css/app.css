@@ -34912,14 +34912,21 @@ html.ios body {
 *******************************/.ui.message:empty {
   display: none; }
 
+.main {
+  padding-top: 20px; }
+  .main.home_container {
+    background: #fcab1c; }
+
 .hero {
-  background: #fcab1c;
-  padding-top: 60px;
+  padding-top: 40px;
   padding-bottom: 60px; }
   .hero .ui.text.container {
     font-size: 1.3rem; }
   .hero .ui.header {
     font-size: 3rem; }
+
+.text_container.home {
+  background: #fff; }
 
 .ui.container.home {
   padding-top: 30px;

@@ -3,6 +3,9 @@
 </script>
 <div class="ui container pesquisa" id="pesquisa">
     <div class="ui segments">
+        <div class="ui segment blue inverted">
+          <h2 class="ui header">Pesquisa</h2>
+        </div>
         <div class="ui segment"><div class="ui segments" v-for="pergunta in questionario.perguntas">
         <div class="ui segment blue inverted">
             <h5 class="ui header">
@@ -19,17 +22,19 @@
                 <div class="grouped field">
                     <div v-for="resposta in pergunta.respostas">
                         <div class="field">
+
                             <template v-if="pergunta.tipo == 'radio'">
-                            <div class="ui radio checkbox">
-                                <input type="radio" v-model="empresas_respostas[].resposta_id" value="{{resposta.id}}" />
-                                <label>{{resposta.resposta}}</label>
-                            </div>
+                                <div class="ui radio checkbox">
+                                    <input type="radio" v-model="pergunta.picked" value="{{resposta.id}}" />
+                                    <label>{{resposta.resposta}}</label>
+                                </div>
                             </template>
+
                             <template v-if="pergunta.tipo == 'input'">
                                 <label>{{resposta.resposta}}</label>
-                                <input type="hidden" v-model="empresas_respostas[].resposta_id" value="{{resposta.id}}"/>
-                                <input type="text" v-model="empresas_respostas[].replica"/>
+                                <input type="text" v-model="questionario.perguntas[$parent.$index].respostas[$index].replica" />
                             </template>
+
                         </div>
                     </div>
                 </div>
@@ -38,7 +43,7 @@
 
         </div></div>
         <div class="ui segment right aligned">
-            <a class="ui button large" href="">Próxima Pergunta</a>
+            <a class="ui button large green" href="#" @click.prevent="enviaform">{{ ui.botaoenvio }}</a>
         </div>
     </div>
 </div>
