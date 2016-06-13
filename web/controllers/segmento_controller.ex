@@ -7,7 +7,7 @@ defmodule PesquisaABMP.SegmentoController do
   plug :assoc_questionarios
 
   def index(conn, _params) do
-    segmentos = Repo.all(Segmento)
+    segmentos = Repo.all(Segmento) |> Repo.preload(:questionario)
     render(conn, "index.html", segmentos: segmentos)
   end
 
