@@ -14,7 +14,7 @@
             <%= for segmento <- @segmentos do %>
                 <tr>
                     <td><%= segmento.nome %></td>
-                    <td><%=if segmento.questionario.nome, do: segmento.questionario.nome %>
+                    <td><%= unless is_nil(segmento.questionario), do: segmento.questionario.nome %>
                     </td>
 
                     <td class="acoes">
