@@ -17,6 +17,8 @@ defmodule PesquisaABMP.Empresa do
     belongs_to :cidade, PesquisaABMP.Cidade
     belongs_to :segmento, PesquisaABMP.Segmento
 
+    has_many :empresas_respostas, PesquisaABMP.EmpresaResposta
+
     timestamps
   end
 

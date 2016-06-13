@@ -2,7 +2,7 @@
     <h2>Editando segmento</h2>
 
     <%= render "form.html", changeset: @changeset,
-    action: segmento_path(@conn, :update, @segmento) %>
+    action: segmento_path(@conn, :update, @segmento), questionarios: @questionarios %>
 
     <%= link "Retornar para listagem", to: segmento_path(@conn, :index), class: "ui button" %>
 

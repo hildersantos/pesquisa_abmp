@@ -1,0 +1,56 @@
+<h2>Listing dados empresas</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Empresa</th>
+      <th>Cidade</th>
+      <th>Nome</th>
+      <th>Segmento</th>
+      <th>Filial</th>
+      <th>Endereco</th>
+      <th>Telefone</th>
+      <th>Site</th>
+      <th>Facebook</th>
+      <th>Twitter</th>
+      <th>Instagram</th>
+      <th>Num funcionarios</th>
+      <th>Num socios</th>
+      <th>Num func homens</th>
+      <th>Num func mulheres</th>
+      <th>Tempo atividade</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for dados_empresa <- @dados_empresas do %>
+    <tr>
+      <td><%= dados_empresa.empresa_id %></td>
+      <td><%= dados_empresa.cidade_id %></td>
+      <td><%= dados_empresa.nome %></td>
+      <td><%= dados_empresa.segmento_id %></td>
+      <td><%= dados_empresa.filial %></td>
+      <td><%= dados_empresa.endereco %></td>
+      <td><%= dados_empresa.telefone %></td>
+      <td><%= dados_empresa.site %></td>
+      <td><%= dados_empresa.facebook %></td>
+      <td><%= dados_empresa.twitter %></td>
+      <td><%= dados_empresa.instagram %></td>
+      <td><%= dados_empresa.num_funcionarios %></td>
+      <td><%= dados_empresa.num_socios %></td>
+      <td><%= dados_empresa.num_func_homens %></td>
+      <td><%= dados_empresa.num_func_mulheres %></td>
+      <td><%= dados_empresa.tempo_atividade %></td>
+
+      <td class="text-right">
+        <%= link "Show", to: dados_empresa_path(@conn, :show, dados_empresa), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: dados_empresa_path(@conn, :edit, dados_empresa), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: dados_empresa_path(@conn, :delete, dados_empresa), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= link "New dados empresa", to: dados_empresa_path(@conn, :new) %>

@@ -1,0 +1,6 @@
+<h2>New dados empresa</h2>
+
+<%= render "form.html", changeset: @changeset,
+                        action: dados_empresa_path(@conn, :create) %>
+
+<%= link "Back", to: dados_empresa_path(@conn, :index) %>

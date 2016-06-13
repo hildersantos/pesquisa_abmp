@@ -1,0 +1,31 @@
+<div class="ui container">
+ <h2>Questionários cadastrados</h2>
+
+<table class="ui table">
+  <thead>
+    <tr>
+      <th>Nome</th>
+
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for questionario <- @questionarios do %>
+    <tr>
+      <td></td>
+      <td class="acoes">
+        <% link "Visualizar", to: questionario_path(@conn, :show, questionario), class: "ui button" %>
+        <% link "Editar", to: questionario_path(@conn, :edit, questionario), class: "ui button" %>
+        <% link "Excluir", to: questionario_path(@conn, :delete, questionario), method: :delete, data: [confirm: "Você tem certeza?"], class: "ui button negative" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%# link "Nova questionario", to: questionario_path(@conn, :new), class: "ui large button primary" %>
+</div>
+<div class="ui container paginacao">
+        <h5>Paginação:</h5>
+    <%# pagination_links @conn, @questionarios_pages, view_style: :semantic %>
+</div>

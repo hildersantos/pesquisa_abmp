@@ -1,0 +1,89 @@
+<%= form_for @changeset, @action, fn f -> %>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <p>Oops, something went wrong! Please check the errors below.</p>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= label f, :nome, class: "control-label" %>
+    <%= text_input f, :nome, class: "form-control" %>
+    <%= error_tag f, :nome %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :filial, class: "control-label" %>
+    <%= textarea f, :filial, class: "form-control" %>
+    <%= error_tag f, :filial %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :endereco, class: "control-label" %>
+    <%= textarea f, :endereco, class: "form-control" %>
+    <%= error_tag f, :endereco %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :telefone, class: "control-label" %>
+    <%= text_input f, :telefone, class: "form-control" %>
+    <%= error_tag f, :telefone %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :site, class: "control-label" %>
+    <%= text_input f, :site, class: "form-control" %>
+    <%= error_tag f, :site %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :facebook, class: "control-label" %>
+    <%= text_input f, :facebook, class: "form-control" %>
+    <%= error_tag f, :facebook %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :twitter, class: "control-label" %>
+    <%= text_input f, :twitter, class: "form-control" %>
+    <%= error_tag f, :twitter %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :instagram, class: "control-label" %>
+    <%= text_input f, :instagram, class: "form-control" %>
+    <%= error_tag f, :instagram %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :num_funcionarios, class: "control-label" %>
+    <%= number_input f, :num_funcionarios, class: "form-control" %>
+    <%= error_tag f, :num_funcionarios %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :num_socios, class: "control-label" %>
+    <%= number_input f, :num_socios, class: "form-control" %>
+    <%= error_tag f, :num_socios %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :num_func_homens, class: "control-label" %>
+    <%= number_input f, :num_func_homens, class: "form-control" %>
+    <%= error_tag f, :num_func_homens %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :num_func_mulheres, class: "control-label" %>
+    <%= number_input f, :num_func_mulheres, class: "form-control" %>
+    <%= error_tag f, :num_func_mulheres %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :tempo_atividade, class: "control-label" %>
+    <%= number_input f, :tempo_atividade, class: "form-control" %>
+    <%= error_tag f, :tempo_atividade %>
+  </div>
+
+  <div class="form-group">
+    <%= submit "Submit", class: "btn btn-primary" %>
+  </div>
+<% end %>

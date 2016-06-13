@@ -4,6 +4,7 @@ defmodule PesquisaABMP.SegmentoController do
   alias PesquisaABMP.Segmento
 
   plug :scrub_params, "segmento" when action in [:create, :update]
+  plug :assoc_questionarios
 
   def index(conn, _params) do
     segmentos = Repo.all(Segmento)
@@ -63,5 +64,11 @@ defmodule PesquisaABMP.SegmentoController do
     conn
     |> put_flash(:info, "Segmento deleted successfully.")
     |> redirect(to: segmento_path(conn, :index))
+  end
+
+  defp assoc_questionarios(conn, _params) do
+    questionarios = Repo.all(PesquisaABMP.Questionario) |> Enum.map(&{&1.nome,&1.id})
+    conn
+    |> assign(:questionarios, questionarios)
   end
 end

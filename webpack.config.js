@@ -1,5 +1,6 @@
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
+var LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 var webpack = require('webpack');
 
 module.exports = {
@@ -20,7 +21,8 @@ module.exports = {
                 exclude: /(node_modules|bower_components|semantic)/,
                 include: __dirname,
                 query: {
-                    presets: ['es2015']
+                    presets: ['es2015'],
+                    plugins: ['lodash']
                 }
             },
             {
@@ -35,7 +37,9 @@ module.exports = {
     },
     extensions: ["", ".js", ".sass", ".jsx", ".css"],
     plugins: [
+        new LodashModuleReplacementPlugin,
         new ExtractTextPlugin("css/app.css"),
+        new webpack.optimize.OccurenceOrderPlugin,
         new CopyWebpackPlugin([{from: "./web/static/assets"}]),
         new webpack.ProvidePlugin({
             $: "jquery",

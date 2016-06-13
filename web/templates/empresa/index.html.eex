@@ -7,6 +7,7 @@
       <th>Nome</th>
       <th>Segmento</th>
       <th>Telefone</th>
+      <th>Status da Pesquisa</th>
 
       <th>Ações</th>
     </tr>
@@ -17,6 +18,7 @@
       <td><%= empresa.nome %></td>
       <td><%= empresa.segmento.nome %></td>
       <td><%= empresa.telefone %></td>
+      <td><div class="ui grey label">Não iniciada</div></td>
       <td class="acoes">
         <%= link "Visualizar", to: empresa_path(@conn, :show, empresa), class: "ui button" %>
         <%= link "Editar", to: empresa_path(@conn, :edit, empresa), class: "ui button" %>

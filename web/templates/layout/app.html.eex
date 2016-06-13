@@ -30,11 +30,11 @@
               </div>
           </div>
       </div>
-    <div class="ui container">
-        <div class="ui info message"><%= get_flash(@conn, :info) %></div>
-        <div class="ui negative message"><%= get_flash(@conn, :error) %></div>
-    </div> <!-- /container -->
-      <main role="main">
+      <main role="main" class="main <%= main_class(@conn) %>">
+        <div class="ui container">
+            <div class="ui info message"><%= get_flash(@conn, :info) %></div>
+            <div class="ui negative message"><%= get_flash(@conn, :error) %></div>
+        </div> <!-- /container -->
         <%= render @view_module, @view_template, assigns %>
       </main>
 

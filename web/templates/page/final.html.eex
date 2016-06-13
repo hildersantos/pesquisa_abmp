@@ -1,16 +1,13 @@
 <div class="hero">
     <div class="ui text container center aligned">
         <h1 class="ui header">
-            Participe da Pesquisa da ABMP
+            Agradecemos a sua participação!
         </h1>
         <p>
-            A <strong>Associação Baiana do Mercado Publicitário</strong> está realizando uma pesquisa-diagnóstico do mercado baiano de comunicação e contamos com o seu apoio para realizá-la.
+          Se quiser deixar qualquer comentário sobre a pesquisa, por favor, clique no botão abaixo para nos enviar um email.
         </p>
         <p>
-            Nenhuma informação de sua empresa será divulgada: todos os dados serão tabulados por segmento ou área de atuação.
-        </p>
-        <p>
-            <a class="ui primary huge button" href="/pesquisa">Iniciar Pesquisa</a>
+            <a class="ui green huge button" href="mailto:pesquisaabmp@gmail.com">Envie seu feedback</a>
         </p>
     </div>
 </div>
