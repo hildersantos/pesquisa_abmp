@@ -25,14 +25,14 @@
 
                             <template v-if="pergunta.tipo == 'radio'">
                                 <div class="ui radio checkbox">
-                                    <input type="radio" v-model="pergunta.picked" value="{{resposta.id}}" />
+                                    <input type="radio" v-model="pergunta.picked" value="{{resposta.id}}" required />
                                     <label>{{resposta.resposta}}</label>
                                 </div>
                             </template>
 
                             <template v-if="pergunta.tipo == 'input'">
                                 <label>{{resposta.resposta}}</label>
-                                <input type="text" v-model="questionario.perguntas[$parent.$index].respostas[$index].replica" />
+                                <input type="number" v-model="questionario.perguntas[$parent.$index].respostas[$index].replica" required />
                             </template>
 
                         </div>
@@ -43,7 +43,7 @@
 
         </div></div>
         <div class="ui segment right aligned">
-            <a class="ui button large green" href="#" @click.prevent="enviaform">{{ ui.botaoenvio }}</a>
+          <button class="ui button large green" @click.prevent="enviaform" type="submit">{{ ui.botaoenvio }}</button>
         </div>
     </div>
 </div>

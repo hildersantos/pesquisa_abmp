@@ -118,7 +118,9 @@ if (document.getElementById('pesquisa')) {
                 console.log(response)
                 window.location = window.location.protocol + '//' + window.location.hostname + (window.location.port ? ':'+window.location.port : '') + '/final'
               })
-              .catch((response) => console.error(response))
+              .catch((response) => {
+                this.$set('ui.botaoenvio', 'Ocorreu um erro ao enviar os dados... verifique e tente novamente')
+              })
 
         }
       }

@@ -11284,6 +11284,8 @@
 	    },
 	    methods: {
 	      enviaform: function enviaform(e) {
+	        var _this2 = this;
+
 	        var empresas_respostas = [];
 	        (0, _forEach3.default)(this.questionario.perguntas, function (o) {
 	          if (o.picked) {
@@ -11314,16 +11316,16 @@
 	            console.log(response);
 	            window.location = window.location.protocol + '//' + window.location.hostname + (window.location.port ? ':' + window.location.port : '') + '/final';
 	          }).catch(function (response) {
-	            return console.error(response);
+	            _this2.$set('ui.botaoenvio', 'Ocorreu um erro ao enviar os dados... verifique e tente novamente');
 	          });
 	        }
 	      }
 	    },
 	    ready: function ready() {
-	      var _this2 = this;
+	      var _this3 = this;
 
 	      axios.get('/api/empresas/' + empresa_id + '/questionario').then(function (response) {
-	        _this2.$set('questionario', response.data.data);
+	        _this3.$set('questionario', response.data.data);
 	      }).catch(function (response) {
 	        return console.error(response);
 	      });

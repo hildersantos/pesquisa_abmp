@@ -10,7 +10,11 @@
             Nenhuma informação de sua empresa será divulgada: todos os dados serão tabulados por segmento ou área de atuação.
         </p>
         <p>
+            <%= if(@current_user) do %>
             <a class="ui primary huge button" href="/pesquisa">Iniciar Pesquisa</a>
+            <% else %>
+            <%= link("Faça login para iniciar a pesquisa", to: "/sessoes/new", class: "ui negative huge button") %>
+            <% end %>
         </p>
     </div>
 </div>
