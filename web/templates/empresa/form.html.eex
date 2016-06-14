@@ -83,6 +83,14 @@
     <%= error_tag f, :password %>
   </div>
 
+  <div class="inline field">
+    <div class="ui checkbox">
+      <%= checkbox f, :is_admin, class: "hidden", tabindex: "0" %>
+      <%= label f, :is_admin, "Este usuário é um administrador do sistema" %>
+      <%= error_tag f, :is_admin %>
+    </div>
+  </div>
+
   <div class="field">
     <%= submit "Enviar", class: "ui button primary" %>
   </div>
