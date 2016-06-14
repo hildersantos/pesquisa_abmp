@@ -23,12 +23,12 @@ defmodule PesquisaABMP.Router do
     get "/", PageController, :index
     get "/final", PageController, :final
     get "/pesquisa", PesquisaController, :index
+    resources "/pre_cadastro", DadosEmpresaController, only: [:new, :create, :delete]
     resources "/empresas", EmpresaController
     resources "/sessoes", SessaoController, only: [:new, :create, :delete]
     resources "/cidades", CidadeController
     resources "/segmentos", SegmentoController
     resources "/questionarios", QuestionarioController, only: [:new, :edit]
-    resources "/dados_empresas", DadosEmpresaController
   end
 
   # Other scopes may use custom stacks.

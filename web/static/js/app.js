@@ -135,3 +135,19 @@ if (document.getElementById('pesquisa')) {
     }
   })
 }
+
+jQuery(function($) {
+  if($('#pesquisa').length) {
+    $('.ui.form.pesquisa-form').form({
+      fields: {
+        percentual: [
+          'integer[0..100]',
+          'empty'
+        ],
+        perguntaradio: [
+          'checked'
+        ]
+      }
+    })
+  }
+})

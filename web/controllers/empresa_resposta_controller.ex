@@ -27,13 +27,15 @@ defmodule PesquisaABMP.EmpresaRespostaController do
     end
   end
 
-  def create_all(conn, %{"empresas_respostas" => empresas_respostas_params}, _user) do
+  def create_all(conn, %{"empresas_respostas" => empresas_respostas_params}, user) do
     empresas_respostas = Repo.all(EmpresaResposta)
 
     new_params = empresas_respostas_params |> List.first()
     changeset = EmpresaResposta.changeset(%EmpresaResposta{}, new_params)
     case empresas_respostas_params |> Enum.each(&(Repo.insert_or_update!(EmpresaResposta.changeset(%EmpresaResposta{}, &1)))) do
       :ok ->
+        user |> PesquisaABMP.Empresa.changeset(%{"status_pesquisa" => "concluida"}) |> Repo.update!
+
         conn
         |> put_status(:created)
         |> put_resp_header("location", api_empresa_resposta_path(conn, :index))

@@ -1,89 +1,89 @@
-<%= form_for @changeset, @action, fn f -> %>
+<%= form_for @changeset, @action, [class: "ui form"], fn f -> %>
   <%= if @changeset.action do %>
-    <div class="alert alert-danger">
-      <p>Oops, something went wrong! Please check the errors below.</p>
+    <div class="ui negative message">
+      <p>Algo deu errado. Confira os erros abaixo.</p>
     </div>
   <% end %>
 
-  <div class="form-group">
-    <%= label f, :nome, class: "control-label" %>
-    <%= text_input f, :nome, class: "form-control" %>
+  <div class="field">
+    <%= label f, :nome, "Nome da Empresa", class: "control-label" %>
+    <%= text_input f, :nome, class: "form-control", placeholder: "Nome Fantasia da sua empresa" %>
     <%= error_tag f, :nome %>
   </div>
 
-  <div class="form-group">
+  <div class="field">
     <%= label f, :filial, class: "control-label" %>
-    <%= textarea f, :filial, class: "form-control" %>
+    <%= textarea f, :filial, class: "form-control", placeholder: "Insira aqui a filial/filiais da sua empresa" %>
     <%= error_tag f, :filial %>
   </div>
 
-  <div class="form-group">
+  <div class="field">
     <%= label f, :endereco, class: "control-label" %>
-    <%= textarea f, :endereco, class: "form-control" %>
+    <%= textarea f, :endereco, class: "form-control", placeholder: "Endereço da sua empresa" %>
     <%= error_tag f, :endereco %>
   </div>
 
-  <div class="form-group">
+  <div class="field">
     <%= label f, :telefone, class: "control-label" %>
     <%= text_input f, :telefone, class: "form-control" %>
     <%= error_tag f, :telefone %>
   </div>
 
-  <div class="form-group">
+  <div class="field">
     <%= label f, :site, class: "control-label" %>
-    <%= text_input f, :site, class: "form-control" %>
+    <%= text_input f, :site, class: "form-control", placeholder: "Ex. http://www.meusite.com.br" %>
     <%= error_tag f, :site %>
   </div>
 
-  <div class="form-group">
+  <div class="field">
     <%= label f, :facebook, class: "control-label" %>
-    <%= text_input f, :facebook, class: "form-control" %>
+    <%= text_input f, :facebook, class: "form-control", placeholder: "Ex. https://facebook.com/minhapagina" %>
     <%= error_tag f, :facebook %>
   </div>
 
-  <div class="form-group">
+  <div class="field">
     <%= label f, :twitter, class: "control-label" %>
-    <%= text_input f, :twitter, class: "form-control" %>
+    <%= text_input f, :twitter, class: "form-control", placeholder: "Seu usuário no twitter, ex: @minhaempresa" %>
     <%= error_tag f, :twitter %>
   </div>
 
-  <div class="form-group">
+  <div class="field">
     <%= label f, :instagram, class: "control-label" %>
-    <%= text_input f, :instagram, class: "form-control" %>
+    <%= text_input f, :instagram, class: "form-control", placeholder: "Seu usuário no instagram, ex: minhaempresa" %>
     <%= error_tag f, :instagram %>
   </div>
 
-  <div class="form-group">
-    <%= label f, :num_funcionarios, class: "control-label" %>
-    <%= number_input f, :num_funcionarios, class: "form-control" %>
+  <div class="field">
+    <%= label f, :num_funcionarios, "Número de Funcionários", class: "control-label" %>
+    <%= number_input f, :num_funcionarios, class: "form-control", placeholder: "Quantidade total de funcionários" %>
     <%= error_tag f, :num_funcionarios %>
   </div>
 
-  <div class="form-group">
-    <%= label f, :num_socios, class: "control-label" %>
+  <div class="field">
+    <%= label f, :num_socios, "Quantidade de Sócios", class: "control-label" %>
     <%= number_input f, :num_socios, class: "form-control" %>
     <%= error_tag f, :num_socios %>
   </div>
 
-  <div class="form-group">
-    <%= label f, :num_func_homens, class: "control-label" %>
+  <div class="field">
+    <%= label f, :num_func_homens, "Número de funcionários do sexo masculino", class: "control-label" %>
     <%= number_input f, :num_func_homens, class: "form-control" %>
     <%= error_tag f, :num_func_homens %>
   </div>
 
-  <div class="form-group">
-    <%= label f, :num_func_mulheres, class: "control-label" %>
+  <div class="field">
+    <%= label f, :num_func_mulheres, "Número de funcionários do sexo feminino", class: "control-label" %>
     <%= number_input f, :num_func_mulheres, class: "form-control" %>
     <%= error_tag f, :num_func_mulheres %>
   </div>
 
-  <div class="form-group">
+  <div class="field">
     <%= label f, :tempo_atividade, class: "control-label" %>
-    <%= number_input f, :tempo_atividade, class: "form-control" %>
+    <%= number_input f, :tempo_atividade, class: "form-control", placeholder: "Tempo de atividade da sua empresa, em anos" %>
     <%= error_tag f, :tempo_atividade %>
   </div>
 
-  <div class="form-group">
-    <%= submit "Submit", class: "btn btn-primary" %>
+  <div class="field">
+    <%= submit "Enviar e continuar", class: "ui button primary large" %>
   </div>
 <% end %>

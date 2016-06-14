@@ -2,27 +2,49 @@ defmodule PesquisaABMP.DadosEmpresaController do
   use PesquisaABMP.Web, :controller
 
   alias PesquisaABMP.DadosEmpresa
+  alias PesquisaABMP.Empresa
 
+  plug :authenticate
+  plug :only_admins when action in [:show, :index, :delete]
   plug :scrub_params, "dados_empresa" when action in [:create, :update]
 
-  def index(conn, _params) do
-    dados_empresas = Repo.all(DadosEmpresa)
+  def index(conn, _params, _user) do
+    dados_empresas = Repo.all(DadosEmpresa) |> Repo.preload(:cidade) |> Repo.preload(:empresa) |> Repo.preload(:segmento)
     render(conn, "index.html", dados_empresas: dados_empresas)
   end
 
-  def new(conn, _params) do
-    changeset = DadosEmpresa.changeset(%DadosEmpresa{})
+  def new(conn, _params, user) do
+    if(user.status_pesquisa === "iniciada") do
+      conn
+      |> redirect(to: pesquisa_path(conn, :index))
+      |> halt()
+    end
+
+    if(user.status_pesquisa === "concluida") do
+      conn
+      |> put_flash(:info, "Sua pesquisa já foi respondida. Obrigado!")
+      |> redirect(to: page_path(conn, :final))
+      |> halt()
+    end
+
+    changeset = user |> build_assoc(:dados_empresa) |> DadosEmpresa.changeset
     render(conn, "new.html", changeset: changeset)
   end
 
-  def create(conn, %{"dados_empresa" => dados_empresa_params}) do
-    changeset = DadosEmpresa.changeset(%DadosEmpresa{}, dados_empresa_params)
+  def create(conn, %{"dados_empresa" => dados_empresa_params}, user) do
+    changeset =
+    user
+    |> build_assoc(:dados_empresa)
+    |> DadosEmpresa.changeset(dados_empresa_params)
+
 
     case Repo.insert(changeset) do
       {:ok, _dados_empresa} ->
+        user |> Empresa.changeset(%{"status_pesquisa" => "iniciada"}) |> Repo.update!
+
         conn
-        |> put_flash(:info, "Dados empresa created successfully.")
-        |> redirect(to: dados_empresa_path(conn, :index))
+        |> put_flash(:info, "Dados atualizados com sucesso!")
+        |> redirect(to: pesquisa_path(conn, :index))
       {:error, changeset} ->
         render(conn, "new.html", changeset: changeset)
     end
@@ -63,5 +85,9 @@ defmodule PesquisaABMP.DadosEmpresaController do
     conn
     |> put_flash(:info, "Dados empresa deleted successfully.")
     |> redirect(to: dados_empresa_path(conn, :index))
+  end
+
+  def action(conn, _) do
+    apply(__MODULE__, action_name(conn), [conn, conn.params, conn.assigns.current_user])
   end
 end

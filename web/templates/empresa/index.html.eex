@@ -18,7 +18,17 @@
       <td><%= empresa.nome %></td>
       <td><%= empresa.segmento.nome %></td>
       <td><%= empresa.telefone %></td>
-      <td><div class="ui grey label">Não iniciada</div></td>
+      <td>
+        <%= if(empresa.status_pesquisa == "iniciada") do %>
+            <div class="ui blue label">Iniciada</div>
+        <% end %>
+        <%= if(empresa.status_pesquisa == "concluida") do %>
+            <div class="ui green label">Concluída</div>
+        <% end %>
+        <%= if(is_nil(empresa.status_pesquisa)) do %>
+            <div class="ui grey label">Não iniciada</div>
+        <% end %>
+      </td>
       <td class="acoes">
         <%= link "Visualizar", to: empresa_path(@conn, :show, empresa), class: "ui button" %>
         <%= link "Editar", to: empresa_path(@conn, :edit, empresa), class: "ui button" %>

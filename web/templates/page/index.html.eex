@@ -11,7 +11,7 @@
         </p>
         <p>
             <%= if(@current_user) do %>
-            <a class="ui primary huge button" href="/pesquisa">Iniciar Pesquisa</a>
+            <a class="ui primary huge button" href="/pre_cadastro/new">Iniciar Pesquisa</a>
             <% else %>
             <%= link("Faça login para iniciar a pesquisa", to: "/sessoes/new", class: "ui negative huge button") %>
             <% end %>

@@ -1,6 +1,7 @@
-<h2>New dados empresa</h2>
+<div class="ui container">
+  <h2 class="ui header">Preencha os dados abaixo</h2>
 
-<%= render "form.html", changeset: @changeset,
-                        action: dados_empresa_path(@conn, :create) %>
+  <%= render "form.html", changeset: @changeset,
+  action: dados_empresa_path(@conn, :create) %>
 
-<%= link "Back", to: dados_empresa_path(@conn, :index) %>
+</div>

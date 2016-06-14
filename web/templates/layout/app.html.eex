@@ -17,7 +17,7 @@
               <img alt="" src="<%= static_path(@conn, "/images/marca-abmp.png") %>"/>
           </div>
           <div class="header item">
-              Pesquisa ABMP
+            <%= link("Pesquisa ABMP", to: page_path(@conn, :index)) %>
           </div>
           <div class="right menu">
               <div class="item">

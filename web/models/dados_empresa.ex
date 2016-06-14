@@ -22,8 +22,8 @@ defmodule PesquisaABMP.DadosEmpresa do
     timestamps
   end
 
-  @required_fields ~w(nome filial endereco telefone site facebook twitter instagram num_funcionarios num_socios num_func_homens num_func_mulheres tempo_atividade)
-  @optional_fields ~w()
+  @required_fields ~w(nome endereco telefone num_funcionarios num_socios num_func_homens num_func_mulheres tempo_atividade)
+  @optional_fields ~w(filial site facebook twitter instagram)
 
   @doc """
   Creates a changeset based on the `model` and `params`.

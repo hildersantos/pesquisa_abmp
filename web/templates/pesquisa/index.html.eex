@@ -6,7 +6,9 @@
         <div class="ui segment blue inverted">
           <h2 class="ui header">Pesquisa</h2>
         </div>
-        <div class="ui segment"><div class="ui segments" v-for="pergunta in questionario.perguntas">
+        <div class="ui segment">
+          <form  @submit.prevent="enviaform" class="ui form pesquisa-form">
+        <div class="ui segments" v-for="pergunta in questionario.perguntas">
         <div class="ui segment blue inverted">
             <h5 class="ui header">
                 <div class="content">
@@ -17,33 +19,32 @@
                 </div>
             </h5>
         </div>
-        <div class="ui segment">
-            <form class="ui form" action="">
-                <div class="grouped field">
+          <div class="ui segment">
+              <div class="grouped field">
                     <div v-for="resposta in pergunta.respostas">
                         <div class="field">
 
                             <template v-if="pergunta.tipo == 'radio'">
                                 <div class="ui radio checkbox">
-                                    <input type="radio" v-model="pergunta.picked" value="{{resposta.id}}" required />
+                                    <input type="radio" v-model="pergunta.picked" name="pergunta_{{$parent.$index}}" value="{{resposta.id}}" data-validate="perguntaradio" required />
                                     <label>{{resposta.resposta}}</label>
                                 </div>
                             </template>
 
                             <template v-if="pergunta.tipo == 'input'">
                                 <label>{{resposta.resposta}}</label>
-                                <input type="number" v-model="questionario.perguntas[$parent.$index].respostas[$index].replica" required />
+                                <input type="number" min="0" max="100" name="pergunta_{{$parent.$index}}_resposta_{{$index}}" required v-model="questionario.perguntas[$parent.$index].respostas[$index].replica" data-validate="percentual" />
                             </template>
 
                         </div>
                     </div>
                 </div>
-            </form>
+          </div>
         </div>
-
-        </div></div>
         <div class="ui segment right aligned">
-          <button class="ui button large green" @click.prevent="enviaform" type="submit">{{ ui.botaoenvio }}</button>
+          <button class="ui button large green" type="submit" >{{ ui.botaoenvio }}</button>
+        </div>
+          </form>
         </div>
     </div>
 </div>
