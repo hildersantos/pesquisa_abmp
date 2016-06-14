@@ -3,8 +3,10 @@ defmodule PesquisaABMP.SegmentoController do
 
   alias PesquisaABMP.Segmento
 
-  plug :scrub_params, "segmento" when action in [:create, :update]
+  plug :authenticate
+  plug :only_admins
   plug :assoc_questionarios
+  plug :scrub_params, "segmento" when action in [:create, :update]
 
   def index(conn, _params) do
     segmentos = Repo.all(Segmento) |> Repo.preload(:questionario)

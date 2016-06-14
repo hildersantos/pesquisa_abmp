@@ -1,9 +1,10 @@
 defmodule PesquisaABMP.EmpresaController do
   use PesquisaABMP.Web, :controller
 
-  plug :authenticate when action in [:index, :show]
   alias PesquisaABMP.Empresa
 
+  plug :authenticate
+  plug :only_admins
   plug :scrub_params, "empresa" when action in [:create, :update]
 
   def index(conn, params) do
@@ -65,16 +66,4 @@ defmodule PesquisaABMP.EmpresaController do
     |> put_flash(:info, "#{empresa.nome} excluída com sucesso.")
     |> redirect(to: empresa_path(conn, :index))
   end
-
-  defp authenticate(conn, _opts) do
-    if conn.assigns.current_user do
-      conn
-    else
-      conn
-      |> put_flash(:error, "Você precisa estar logado para ver esta página.")
-      |> redirect(to: page_path(conn, :index))
-      |> halt()
-    end
-  end
-
 end

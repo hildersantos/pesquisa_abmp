@@ -1,6 +1,11 @@
 defmodule PesquisaABMP.Auth do
   import Plug.Conn
+  import Phoenix.Controller
   import Comeonin.Bcrypt, only: [checkpw: 2, dummy_checkpw: 0]
+
+  alias PesquisaABMP.Router.Helpers
+
+  @default_fail_message "Você não tem permissão de ver esta página"
 
   def init(opts) do
     Keyword.fetch!(opts, :repo)
@@ -36,5 +41,30 @@ defmodule PesquisaABMP.Auth do
 
   def logout(conn) do
     configure_session(conn, drop: true)
+  end
+
+  def authenticate(conn, _opts) do
+    if conn.assigns.current_user do
+      conn
+    else
+      conn
+      |> failed_redirect("Você precisa estar logado para ver esta página")
+    end
+  end
+
+  def only_admins(conn, _opts) do
+    if conn.assigns.current_user && conn.assigns.current_user.is_admin do
+      conn
+    else
+      conn
+      |> failed_redirect()
+    end
+  end
+
+  defp failed_redirect(conn, message \\ @default_fail_message) do
+    conn
+    |> put_flash(:error, message)
+    |> redirect(to: Helpers.page_path(conn, :index))
+    |> halt()
   end
 end

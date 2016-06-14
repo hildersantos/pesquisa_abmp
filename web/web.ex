@@ -36,6 +36,7 @@ defmodule PesquisaABMP.Web do
 
       import PesquisaABMP.Router.Helpers
       import PesquisaABMP.Gettext
+      import PesquisaABMP.Auth, only: [authenticate: 2, only_admins: 2]
     end
   end
 

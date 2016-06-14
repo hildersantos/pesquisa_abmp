@@ -67,15 +67,4 @@ defmodule PesquisaABMP.QuestionarioController do
     empresa = Repo.get!(PesquisaABMP.Empresa, id) |> Repo.preload([segmento: [questionario: [perguntas: {from(p in PesquisaABMP.Pergunta, order_by: p.id), :respostas}]]])
     render(conn, :show, questionario: empresa.segmento.questionario)
   end
-
-  defp authenticate(conn, _opts) do
-    if conn.assigns.current_user do
-      conn
-    else
-      conn
-      |> put_flash(:error, "Você precisa estar logado para ver esta página.")
-      |> redirect(to: page_path(conn, :index))
-      |> halt()
-    end
-  end
 end

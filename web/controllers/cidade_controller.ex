@@ -3,6 +3,8 @@ defmodule PesquisaABMP.CidadeController do
 
   alias PesquisaABMP.Cidade
 
+  plug :authenticate
+  plug :only_admins
   plug :scrub_params, "cidade" when action in [:create, :update]
 
   def index(conn, _params) do

@@ -72,15 +72,4 @@ defmodule PesquisaABMP.EmpresaRespostaController do
   def action(conn, _) do
     apply(__MODULE__, action_name(conn), [conn, conn.params, conn.assigns.current_user])
   end
-
-  defp authenticate(conn, _opts) do
-    if conn.assigns.current_user do
-      conn
-    else
-      conn
-      |> put_flash(:error, "Você precisa estar logado para ver esta página.")
-      |> redirect(to: page_path(conn, :index))
-      |> halt()
-    end
-  end
 end

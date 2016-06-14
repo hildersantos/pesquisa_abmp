@@ -14,6 +14,7 @@ defmodule PesquisaABMP.Empresa do
     field :username, :string
     field :password, :string, virtual: true
     field :password_hash, :string
+    field :is_admin, :boolean
     belongs_to :cidade, PesquisaABMP.Cidade
     belongs_to :segmento, PesquisaABMP.Segmento
 
@@ -23,7 +24,7 @@ defmodule PesquisaABMP.Empresa do
   end
 
   @required_fields ~w(nome username cidade_id segmento_id)
-  @optional_fields ~w(endereco cep telefone diretor1 diretor2 site email1 email2 password)
+  @optional_fields ~w(endereco cep telefone diretor1 diretor2 site email1 email2 password is_admin)
 
   @doc """
   Creates a changeset based on the `model` and `params`.
