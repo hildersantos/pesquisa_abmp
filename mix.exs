@@ -41,6 +41,8 @@ defmodule PesquisaABMP.Mixfile do
      {:scrivener, "~> 1.0"},
      {:scrivener_html, "~> 1.1"},
      {:csv, "~> 1.4"},
+     {:mailgun, "~> 0.1.2"},
+     {:poison, "~> 2.1", override: true},
      {:cowboy, "~> 1.0"}]
   end
 

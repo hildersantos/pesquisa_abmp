@@ -26,6 +26,8 @@ defmodule PesquisaABMP.Router do
     resources "/pre_cadastro", DadosEmpresaController, only: [:new, :create, :delete]
     resources "/empresas", EmpresaController
     resources "/sessoes", SessaoController, only: [:new, :create, :delete]
+    get "/sessoes/reset_password", SessaoController, :reset_password
+    post "/sessoes/reset_password", SessaoController, :reset_password_handler
     resources "/cidades", CidadeController
     resources "/segmentos", SegmentoController
     resources "/questionarios", QuestionarioController, only: [:new, :edit]

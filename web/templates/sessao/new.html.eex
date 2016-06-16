@@ -8,6 +8,9 @@
     <div class="field">
         <%= password_input f, :password, placeholder: "Senha" %>
     </div>
+    <p>
+      Não possui ou esqueceu sua senha? <%= link("Clique aqui.", to: "/sessoes/reset_password") %>
+    </p>
     <%= submit "Login", class: "ui button primary" %>
     <% end %>
 </div>

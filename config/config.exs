@@ -9,6 +9,11 @@ use Mix.Config
 config :pesquisa_abmp,
   app_namespace: PesquisaABMP
 
+# Mailgun
+config :pesquisa_abmp,
+  mailgun_domain: 'mailer.pesquisaabmp.com.br',
+  mailgun_key: 'key-9758e1ec46a53b6224a343006bd2427e'
+
 # Configures Scrivener HTML
 config :scrivener_html,
   routes_helper: PesquisaABMP.Router.Helpers

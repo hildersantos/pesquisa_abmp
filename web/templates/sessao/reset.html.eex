@@ -1,0 +1,15 @@
+<div class="ui container">
+  <h2 class="ui header">
+    Gere uma nova senha
+  </h2>
+  <p>
+    Digite o seu nome de usuário no campo abaixo, ou <%= link "retorne para a tela de login", to: "/sessoes/new" %>.
+  </p>
+  <%= form_for @conn, sessao_path(@conn, :reset_password_handler), [as: :reset_password, class: "ui form"], fn f -> %>
+  <div class="field">
+    <%= label f, :username, "Nome de usuário" %>
+    <%= text_input f, :username, placeholder: "Digite o seu nome de usuário" %>
+  </div>
+  <%= submit "Enviar", class: "ui button large primary" %>
+  <% end %>
+</div>
