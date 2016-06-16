@@ -11,7 +11,7 @@ config :pesquisa_abmp,
 
 # Mailgun
 config :pesquisa_abmp,
-  mailgun_domain: 'mailer.pesquisaabmp.com.br',
+  mailgun_domain: 'https://api.mailgun.net/v3/mailer.pesquisaabmp.com.br',
   mailgun_key: 'key-9758e1ec46a53b6224a343006bd2427e'
 
 # Configures Scrivener HTML
