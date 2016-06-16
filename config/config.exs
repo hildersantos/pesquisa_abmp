@@ -11,8 +11,8 @@ config :pesquisa_abmp,
 
 # Mailgun
 config :pesquisa_abmp,
-  mailgun_domain: 'https://api.mailgun.net/v3/mailer.pesquisaabmp.com.br',
-  mailgun_key: 'key-9758e1ec46a53b6224a343006bd2427e'
+  mailgun_domain: System.get_env("MAILGUN_DOMAIN"),
+  mailgun_key: System.get_env("MAILGUN_KEY")
 
 # Configures Scrivener HTML
 config :scrivener_html,
