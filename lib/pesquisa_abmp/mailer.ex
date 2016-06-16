@@ -3,7 +3,7 @@ defmodule PesquisaABMP.Mailer do
     domain: Application.get_env(:pesquisa_abmp, :mailgun_domain),
     key: Application.get_env(:pesquisa_abmp, :mailgun_key)
 
-  @sender "postmaster@mailer.pesquisaabmp.com.br"
+  @sender "pesquisa@pesquisaabmp.com.br"
 
   defp reset_email_text(empresa, senha) do
     """
