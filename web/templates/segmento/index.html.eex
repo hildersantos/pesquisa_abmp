@@ -20,6 +20,7 @@
                     <td class="acoes">
                         <%= link "Visualizar", to: segmento_path(@conn, :show, segmento), class: "ui button" %>
                         <%= link "Editar", to: segmento_path(@conn, :edit, segmento), class: "ui button" %>
+                        <%= link "Exportar", to: csv_path(@conn, :export, segmento.id), class: "ui green button" %>
                         <%= link "Excluir", to: segmento_path(@conn, :delete, segmento), method: :delete, data: [confirm: "Você tem certeza?"], class: "ui button negative" %>
                     </td>
                 </tr>

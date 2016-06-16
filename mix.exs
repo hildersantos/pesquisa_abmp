@@ -40,6 +40,7 @@ defmodule PesquisaABMP.Mixfile do
      {:gettext, "~> 0.9"},
      {:scrivener, "~> 1.0"},
      {:scrivener_html, "~> 1.1"},
+     {:csv, "~> 1.4"},
      {:cowboy, "~> 1.0"}]
   end
 

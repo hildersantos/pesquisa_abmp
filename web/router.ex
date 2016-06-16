@@ -31,6 +31,12 @@ defmodule PesquisaABMP.Router do
     resources "/questionarios", QuestionarioController, only: [:new, :edit]
   end
 
+  scope "/csv", PesquisaABMP do
+    pipe_through :api
+
+    get "/export/:segmento_id", CsvController, :export
+  end
+
   # Other scopes may use custom stacks.
   scope "/api", PesquisaABMP, as: :api do
     pipe_through :api
