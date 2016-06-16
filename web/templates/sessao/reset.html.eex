@@ -1,15 +1,21 @@
 <div class="ui container">
   <h2 class="ui header">
-    Gere uma nova senha
+    Instruções para gerar uma nova senha
   </h2>
-  <p>
-    Digite o seu nome de usuário no campo abaixo, ou <%= link "retorne para a tela de login", to: "/sessoes/new" %>.
-  </p>
+
+  <p>Digite abaixo o seu nome de <strong>usuário</strong> para receber em seu e-mail a senha de acesso. Caso não receba o e-mail com a sua nova senha em sua caixa de entrada, <strong>verifique o spam</strong>. Qualquer erro, por favor, entre em contato pelo e-mail <%= link "pesquisa@pesquisaabmp.com.br", to: "mailto:pesquisa@pesquisaabmp.com.br" %> ou nos telefones (71) 3379-6068 / 3289-5010 / 99126-7256 / 99112-4623.</p>
   <%= form_for @conn, sessao_path(@conn, :reset_password_handler), [as: :reset_password, class: "ui form"], fn f -> %>
   <div class="field">
-    <%= label f, :username, "Nome de usuário" %>
+    <%= label f, :username, "Nome de usuário (recebido no email de convite)" %>
     <%= text_input f, :username, placeholder: "Digite o seu nome de usuário" %>
   </div>
   <%= submit "Enviar", class: "ui button large primary" %>
   <% end %>
+  <div class="ui divider">
+
+  </div>
+  <p>
+<small>Se já possui seu usuário e senha, <%= link "retorne para a tela de login", to: "/sessoes/new" %></small>
+
+  </p>
 </div>

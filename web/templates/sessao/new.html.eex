@@ -3,14 +3,18 @@
 
     <%= form_for @conn, sessao_path(@conn, :create), [as: :sessao, class: "ui form"], fn f -> %>
     <div class="field">
+        <%= label f, :username, "Nome de usuário" %>
         <%= text_input f, :username, placeholder: "Usuário" %>
     </div>
     <div class="field">
-        <%= password_input f, :password, placeholder: "Senha" %>
+        <%= label f, :password, "Senha" %>
+        <%= password_input f, :password, placeholder: "Digite sua senha. Caso ainda não possua, clique em 'Solicitar uma nova senha'." %>
+    </div>
+    <%= submit "Login", class: "ui button primary large" %>
+    <div class="ui divider">
     </div>
     <p>
-      Não possui ou esqueceu sua senha? <%= link("Clique aqui.", to: "/sessoes/reset_password") %>
+      Ainda não possui ou esqueceu sua senha? <%= link("Solicitar uma nova senha", to: "/sessoes/reset_password", class: "ui button positive") %>
     </p>
-    <%= submit "Login", class: "ui button primary" %>
     <% end %>
 </div>
