@@ -1,7 +1,13 @@
 <div class="ui container">
- <h2>Empresas cadastradas</h2>
-
-<table class="ui table">
+  <h2 class="ui header">
+    <div class="content">
+      Empresas Cadastradas (<%= Enum.count(@empresas) %>)
+    </div>
+  </h2>
+  <div class="ui segment">
+    <%= link "Cadastrar Nova Empresa", to: empresa_path(@conn, :new), class: "ui small button primary" %>
+  </div>
+<div class="ui segment"><table class="ui table unstackable striped datatable">
   <thead>
     <tr>
       <th>Nome</th>
@@ -37,11 +43,6 @@
     </tr>
 <% end %>
   </tbody>
-</table>
+</table></div>
 
-<%= link "Nova empresa", to: empresa_path(@conn, :new), class: "ui large button primary" %>
-</div>
-<div class="ui container paginacao">
-        <h5>Paginação:</h5>
-    <%= pagination_links @conn, @empresas_pages, view_style: :semantic %>
 </div>
