@@ -55,8 +55,10 @@
 
     </div>
 
-    <%= link "Editar Segmento", to: segmento_path(@conn, :edit, @segmento), class: "ui primary button" %>
-    <%= link "Visualizar todos os segmentos", to: segmento_path(@conn, :index), class: "ui button" %>
-    <%= link "Visualizar todas as empresas", to: empresa_path(@conn, :index), class: "ui button" %>
+    <div class="ui segment">
+      <%= link "Editar este Segmento", to: segmento_path(@conn, :edit, @segmento), class: "ui primary button" %>
+      <%= link "Visualizar todos os segmentos", to: segmento_path(@conn, :index), class: "ui pink button" %>
+      <%= link "Visualizar todas as empresas cadastradas", to: empresa_path(@conn, :index), class: "ui pink button" %>
+    </div>
 
 </div>

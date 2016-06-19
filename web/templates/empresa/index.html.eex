@@ -22,7 +22,7 @@
 <%= for empresa <- @empresas do %>
     <tr>
       <td><%= empresa.nome %></td>
-      <td><%= link empresa.segmento.nome, to: segmento_path(@conn, :show, empresa.segmento) %></td>
+      <td><%= link empresa.segmento.nome, to: segmento_path(@conn, :show, empresa.segmento), class: "ui basic  large label" %></td>
       <td><%= empresa.telefone %></td>
       <td>
         <%= if(empresa.status_pesquisa == "iniciada") do %>
@@ -36,9 +36,9 @@
         <% end %>
       </td>
       <td class="acoes">
-        <%= link "Visualizar", to: empresa_path(@conn, :show, empresa), class: "ui button" %>
-        <%= link "Editar", to: empresa_path(@conn, :edit, empresa), class: "ui button" %>
-        <%= link "Excluir", to: empresa_path(@conn, :delete, empresa), method: :delete, data: [confirm: "Você tem certeza?"], class: "ui button negative" %>
+        <%= link "Visualizar", to: empresa_path(@conn, :show, empresa), class: "ui tiny green button" %>
+        <%= link "Editar", to: empresa_path(@conn, :edit, empresa), class: "ui tiny blue button" %>
+        <%= link "Excluir", to: empresa_path(@conn, :delete, empresa), method: :delete, data: [confirm: "Você tem certeza?"], class: "ui tiny button negative" %>
       </td>
     </tr>
 <% end %>
