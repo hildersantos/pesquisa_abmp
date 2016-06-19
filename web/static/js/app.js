@@ -4,6 +4,8 @@ import 'semantic'
 import Vue from 'vue'
 const axios = require('axios')
 import _ from 'lodash'
+import 'datatables.net'
+import '../vendor/datatables/datables.semanticui'
 
 // Criação de Questionário
 if (document.getElementById('root')) {
@@ -150,4 +152,26 @@ jQuery(function($) {
       }
     })
   }
+  $('.datatable').DataTable({
+    "language": {
+      "lengthMenu": "Mostrar _MENU_ resultados por página",
+      "zeroRecords": "Nada encontrado",
+      "info": "Mostrando página _PAGE_ de _PAGES_",
+      "infoEmpty": "Nenhum registro disponível",
+      "infoFiltered": "(filtrando de _MAX_ registros no total)",
+      "loadingRecords": "Carregando...",
+      "processing": "Processando...",
+      "search": "Busca:",
+      "paginate": {
+        "first": "Primeira",
+        "last": "Última",
+        "next": "Próxima",
+        "previous": "Anterior"
+      },
+      "aria": {
+        "sortAscending": ": ordenar de forma crescente",
+        "sortDescending": ": ordenar de forma descrecente"
+      }
+    }
+  })
 })

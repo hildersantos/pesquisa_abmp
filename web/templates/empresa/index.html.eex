@@ -16,7 +16,7 @@
 <%= for empresa <- @empresas do %>
     <tr>
       <td><%= empresa.nome %></td>
-      <td><%= empresa.segmento.nome %></td>
+      <td><%= link empresa.segmento.nome, to: segmento_path(@conn, :show, empresa.segmento) %></td>
       <td><%= empresa.telefone %></td>
       <td>
         <%= if(empresa.status_pesquisa == "iniciada") do %>

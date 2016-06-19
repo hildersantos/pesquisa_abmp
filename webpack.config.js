@@ -16,6 +16,10 @@ module.exports = {
                 loader: ExtractTextPlugin.extract("style", "css!sass?indentedSyntax!")
             },
             {
+              test: /\.css$/,
+              loader: ExtractTextPlugin.extract("style", "css")
+            },
+            {
                 test: /\.jsx?$/,
                 loader: 'babel',
                 exclude: /(node_modules|bower_components|semantic)/,

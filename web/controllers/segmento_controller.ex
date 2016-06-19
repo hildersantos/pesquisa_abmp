@@ -32,7 +32,7 @@ defmodule PesquisaABMP.SegmentoController do
   end
 
   def show(conn, %{"id" => id}) do
-    segmento = Repo.get!(Segmento, id)
+    segmento = Repo.get!(Segmento, id) |> Repo.preload(empresas: from(e in PesquisaABMP.Empresa, order_by: e.nome))
     render(conn, "show.html", segmento: segmento)
   end
 
