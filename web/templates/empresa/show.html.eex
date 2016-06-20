@@ -87,12 +87,16 @@
           <p>
             <strong>Endereço:</strong> <%=  @empresa.dados_empresa.endereco %>
           </p>
+          <%= unless is_nil(@empresa.dados_empresa.cidade) do %>
           <p>
             <strong>Cidade:</strong> <%=  @empresa.dados_empresa.cidade.nome %>
           </p>
+          <% end %>
+          <%= unless is_nil(@empresa.dados_empresa.segmento) do %>
           <p>
             <strong>Segmento:</strong> <%=  @empresa.dados_empresa.segmento.nome %>
           </p>
+          <% end %>
           <p>
             <strong>Telefone:</strong> <%=  @empresa.dados_empresa.telefone %>
           </p>
