@@ -12,6 +12,9 @@
             <strong>Nome:</strong> <%= @empresa.nome %>
         </p>
         <p>
+            <strong>Nome de usuário:</strong> <%= @empresa.username %>
+        </p>
+        <p>
             <strong>Segmento:</strong> <%= @empresa.segmento.nome %> <%= link "Visualizar Segmento", to: segmento_path(@conn, :show, @empresa.segmento), class: "ui label" %>
         </p>
         <p>

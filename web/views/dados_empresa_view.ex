@@ -7,6 +7,6 @@ defmodule PesquisaABMP.DadosEmpresaView do
   end
 
   def segmentos do
-    PesquisaABMP.Repo.all(PesquisaABMP.Segmento) |> Enum.map(&{&1.nome,&1.id})
+    PesquisaABMP.Repo.all(Ecto.Query.from(s in PesquisaABMP.Segmento, order_by: [asc: s.nome])) |> Enum.map(&{&1.nome,&1.id})
   end
 end

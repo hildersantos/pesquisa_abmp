@@ -8,7 +8,7 @@ defmodule PesquisaABMP.EmpresaController do
   plug :scrub_params, "empresa" when action in [:create, :update]
 
   def index(conn, params) do
-    empresas = Empresa |> Ecto.Query.preload(:segmento) |> Ecto.Query.order_by(asc: :nome) |> Repo.all
+    empresas = Empresa |> Ecto.Query.preload(:segmento) |> Ecto.Query.preload(:cidade) |> Ecto.Query.order_by(asc: :nome) |> Repo.all
     render(conn, "index.html", empresas: empresas)
   end
 

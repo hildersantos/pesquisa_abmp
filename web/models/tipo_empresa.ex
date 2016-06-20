@@ -3,6 +3,7 @@ defmodule PesquisaABMP.TipoEmpresa do
 
   schema "tipos_empresas" do
     field :nome, :string
+    has_many :empresas, PesquisaABMP.Empresa
 
     timestamps
   end
@@ -19,5 +20,13 @@ defmodule PesquisaABMP.TipoEmpresa do
   def changeset(model, params \\ :empty) do
     model
     |> cast(params, @required_fields, @optional_fields)
+  end
+
+  def alphabetical(query) do
+    from t in query, order_by: t.nome
+  end
+
+  def names_and_ids(query) do
+    from t in query, select: {t.nome, t.id}
   end
 end

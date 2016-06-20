@@ -10,11 +10,9 @@
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
 
-PesquisaABMP.Repo.transaction fn ->
+alias PesquisaABMP.Repo
+alias PesquisaABMP.TipoEmpresa
 
-  questionario = PesquisaABMP.Repo.insert!(%PesquisaABMP.Questionario{nome: "Questionário Padrão"})
-
-  pergunta = Ecto.build_assoc(questionario, :perguntas, tipo: "radio", pergunta: "Esse é um teste de pergunta?" ) |> PesquisaABMP.Repo.insert!()
-
-  resposta = Ecto.build_assoc(pergunta, :respostas, resposta: "Sim, esta é uma pergunta") |> PesquisaABMP.Repo.insert!()
+for tipo_empresa <- ~w(ME Ltda. S.A. Outro) do
+    Repo.insert!(%TipoEmpresa{nome: tipo_empresa})
 end

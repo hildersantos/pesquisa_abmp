@@ -12,6 +12,7 @@
     <tr>
       <th>Nome</th>
       <th>Segmento</th>
+      <th>Cidade</th>
       <th>Status da Pesquisa</th>
 
       <th>Ações</th>
@@ -22,6 +23,7 @@
     <tr>
       <td><%= empresa.nome %> <a href="<%= empresa_path(@conn, :show, empresa) %>" class="ui circular icon button"><i class="unhide icon"></i></a></td>
       <td><%= link empresa.segmento.nome, to: segmento_path(@conn, :show, empresa.segmento), class: "ui basic  large label" %></td>
+      <td><%= empresa.cidade.nome %></td>
       <td>
         <%= if(empresa.status_pesquisa == "iniciada") do %>
             <div class="ui blue label">Iniciada</div>

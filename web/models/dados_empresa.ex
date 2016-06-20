@@ -18,11 +18,12 @@ defmodule PesquisaABMP.DadosEmpresa do
     belongs_to :empresa, PesquisaABMP.Empresa
     belongs_to :cidade, PesquisaABMP.Cidade
     belongs_to :segmento, PesquisaABMP.Segmento
+    belongs_to :tipo_empresa, PesquisaABMP.TipoEmpresa
 
     timestamps
   end
 
-  @required_fields ~w(nome endereco telefone num_funcionarios cidade_id segmento_id num_socios num_func_homens num_func_mulheres tempo_atividade)
+  @required_fields ~w(nome endereco telefone num_funcionarios cidade_id segmento_id num_socios num_func_homens num_func_mulheres tempo_atividade tipo_empresa_id)
   @optional_fields ~w(filial site facebook twitter instagram)
 
   @doc """

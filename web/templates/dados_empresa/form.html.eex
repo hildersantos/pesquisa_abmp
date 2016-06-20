@@ -18,6 +18,12 @@
   </div>
 
   <div class="field">
+    <%= label f, :tipo_empresa_id, "Tipo da Empresa", class: "control-label" %>
+    <%= select f, :tipo_empresa_id, @tipos_empresas, prompt: "Escolha uma das opções"  %>
+    <%= error_tag f, :tipo_empresa_id %>
+  </div>
+
+  <div class="field">
     <%= label f, :endereco, class: "control-label" %>
     <%= textarea f, :endereco, class: "form-control", placeholder: "Endereço da sua empresa" %>
     <%= error_tag f, :endereco %>

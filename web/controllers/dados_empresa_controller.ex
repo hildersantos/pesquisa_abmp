@@ -3,10 +3,12 @@ defmodule PesquisaABMP.DadosEmpresaController do
 
   alias PesquisaABMP.DadosEmpresa
   alias PesquisaABMP.Empresa
+  alias PesquisaABMP.TipoEmpresa
 
   plug :authenticate
   plug :only_admins when action in [:show, :index, :delete]
   plug :scrub_params, "dados_empresa" when action in [:create, :update]
+  plug :load_tipos_empresa when action in [:new, :create, :edit, :update]
 
   def index(conn, _params, _user) do
     dados_empresas = Repo.all(DadosEmpresa) |> Repo.preload(:cidade) |> Repo.preload(:empresa) |> Repo.preload(:segmento)
@@ -85,6 +87,15 @@ defmodule PesquisaABMP.DadosEmpresaController do
     conn
     |> put_flash(:info, "Dados empresa deleted successfully.")
     |> redirect(to: dados_empresa_path(conn, :index))
+  end
+
+  defp load_tipos_empresa(conn, _params) do
+    query =
+    TipoEmpresa
+    |> TipoEmpresa.names_and_ids
+
+    tipos_empresas = Repo.all query
+    assign(conn, :tipos_empresas, tipos_empresas)
   end
 
   def action(conn, _) do

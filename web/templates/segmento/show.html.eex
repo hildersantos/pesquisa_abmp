@@ -16,6 +16,7 @@
             <thead>
               <tr>
                 <th>Nome</th>
+                <th>Cidade</th>
                 <th>Status da Pesquisa</th>
                 <th>Ações</th>
               </tr>
@@ -26,6 +27,7 @@
                   <td>
                     <%= empresa.nome %>
                   </td>
+                  <td><%= empresa.cidade.nome %></td>
                   <td>
                     <%= if(empresa.status_pesquisa === nil) do %>
                       <div class="ui label">
