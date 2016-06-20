@@ -1,57 +1,134 @@
 <div class="ui container">
-<h2>Mostrando Empresa: <%= @empresa.nome %></h2>
-
-<div class="ui segments">
-
+  <div class="ui compact segment">
+    <%= link "« Retornar para listagem", to: empresa_path(@conn, :index), class: "ui label" %>
+  </div>
+  <h3 class="ui header">
+    <div class="content">
+      Dados da Empresa
+    </div>
+  </h3>
     <div class="ui segment">
         <p>
             <strong>Nome:</strong> <%= @empresa.nome %>
         </p>
-    </div>
-    <div class="ui segment">
+        <p>
+            <strong>Segmento:</strong> <%= @empresa.segmento.nome %> <%= link "Visualizar Segmento", to: segmento_path(@conn, :show, @empresa.segmento), class: "ui label" %>
+        </p>
         <p>
             <strong>Endereço:</strong> <%= @empresa.endereco %>
         </p>
-    </div>
-    <div class="ui segment">
+        <p>
+            <strong>Cidade:</strong> <%= @empresa.cidade.nome %>
+        </p>
         <p>
             <strong>CEP:</strong> <%= @empresa.cep %>
         </p>
-    </div>
-    <div class="ui segment">
         <p>
             <strong>Telefone:</strong> <%= @empresa.telefone %>
         </p>
-    </div>
-    <div class="ui segment">
         <p>
             <strong>Diretor 1:</strong> <%= @empresa.diretor1 %>
         </p>
-    </div>
-    <div class="ui segment">
         <p>
             <strong>Diretor 2:</strong> <%= @empresa.diretor2 %>
         </p>
-    </div>
-    <div class="ui segment">
         <p>
             <strong>Email 1:</strong> <%= @empresa.email1 %>
         </p>
-    </div>
-    <div class="ui segment">
         <p>
             <strong>Email 2:</strong> <%= @empresa.email2 %>
         </p>
-    </div>
-    <div class="ui segment">
         <p>
             <strong>Site:</strong> <%= @empresa.site %>
         </p>
     </div>
 
-</div>
+    <h4 class="ui header">
+      <div class="content">
+        Dados sobre a pesquisa
+      </div>
+    </h4>
 
-<%= link "Editar", to: empresa_path(@conn, :edit, @empresa), class: "ui primary button" %>
-<%= link "Retornar para listagem", to: empresa_path(@conn, :index), class: "ui button" %>
+    <div class="ui segment">
+
+        <strong>Status:</strong>
+        <%= if(@empresa.status_pesquisa == "iniciada") do %>
+            <div class="ui blue label">Iniciada</div>
+        <% end %>
+        <%= if(@empresa.status_pesquisa == "concluida") do %>
+            <div class="ui green label">Concluída</div>
+        <% end %>
+        <%= if(is_nil(@empresa.status_pesquisa)) do %>
+            <div class="ui grey label">Não iniciada</div>
+        <% end %>
+        <%= if(@empresa.status_pesquisa === "concluida") do %>
+        <div class="ui divider">
+
+        </div>
+
+        <div class="ui segment">
+          <h5 class="ui header">
+            <div class="content">
+              Dados da Empresa
+              <div class="sub header">
+                Dados fornecidos pela empresa na pesquisa
+              </div>
+            </div>
+          </h5>
+          <div class="ui divider">
+
+          </div>
+          <p>
+            <strong>Nome:</strong> <%=  @empresa.dados_empresa.nome %>
+          </p>
+          <p>
+            <strong>Filial:</strong> <%=  @empresa.dados_empresa.filial %>
+          </p>
+          <p>
+            <strong>Endereço:</strong> <%=  @empresa.dados_empresa.endereco %>
+          </p>
+          <p>
+            <strong>Cidade:</strong> <%=  @empresa.dados_empresa.cidade.nome %>
+          </p>
+          <p>
+            <strong>Segmento:</strong> <%=  @empresa.dados_empresa.segmento.nome %>
+          </p>
+          <p>
+            <strong>Telefone:</strong> <%=  @empresa.dados_empresa.telefone %>
+          </p>
+          <p>
+            <strong>Site:</strong> <%=  @empresa.dados_empresa.site %>
+          </p>
+          <p>
+            <strong>Facebook:</strong> <%=  @empresa.dados_empresa.facebook %>
+          </p>
+          <p>
+            <strong>Twitter:</strong> <%=  @empresa.dados_empresa.twitter %>
+          </p>
+          <p>
+            <strong>Instagram:</strong> <%=  @empresa.dados_empresa.instagram %>
+          </p>
+          <p>
+            <strong>Número total de funcionários:</strong> <%=  @empresa.dados_empresa.num_funcionarios %>
+          </p>
+          <p>
+            <strong>Número de Sócios:</strong> <%=  @empresa.dados_empresa.num_socios %>
+          </p>
+          <p>
+            <strong>Número de funcionários (homens):</strong> <%=  @empresa.dados_empresa.num_func_homens %>
+          </p>
+          <p>
+            <strong>Número de funcionários (mulheres):</strong> <%=  @empresa.dados_empresa.num_func_mulheres %>
+          </p>
+          <p>
+            <strong>Tempo de Atividade:</strong> <%=  @empresa.dados_empresa.tempo_atividade %> anos
+          </p>
+        </div>
+
+        <% end %>
+    </div>
+    <div class="ui segment">
+      <%= link "Editar", to: empresa_path(@conn, :edit, @empresa), class: "ui primary large button" %>
+    </div>
 
 </div>

@@ -31,7 +31,7 @@ defmodule PesquisaABMP.EmpresaController do
   end
 
   def show(conn, %{"id" => id}) do
-    empresa = Repo.get!(Empresa, id)
+    empresa = Repo.get!(Empresa, id) |> Repo.preload(:cidade) |> Repo.preload(:segmento) |> Repo.preload(dados_empresa: [:cidade, :segmento])
     render(conn, "show.html", empresa: empresa)
   end
 

@@ -24,6 +24,18 @@
   </div>
 
   <div class="field">
+    <%= label f, :cidade_id, "Cidade", class: "control-label" %>
+    <%= select f, :cidade_id, cidades, prompt: "Escolha uma cidade"  %>
+    <%= error_tag f, :cidade_id %>
+  </div>
+
+  <div class="field">
+    <%= label f, :segmento_id, "Segmento", class: "control-label" %>
+    <%= select f, :segmento_id, segmentos, prompt: "Escolha a área da sua empresa"  %>
+    <%= error_tag f, :segmento_id %>
+  </div>
+
+  <div class="field">
     <%= label f, :telefone, class: "control-label" %>
     <%= text_input f, :telefone, class: "form-control" %>
     <%= error_tag f, :telefone %>

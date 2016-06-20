@@ -22,7 +22,7 @@ defmodule PesquisaABMP.DadosEmpresa do
     timestamps
   end
 
-  @required_fields ~w(nome endereco telefone num_funcionarios num_socios num_func_homens num_func_mulheres tempo_atividade)
+  @required_fields ~w(nome endereco telefone num_funcionarios cidade_id segmento_id num_socios num_func_homens num_func_mulheres tempo_atividade)
   @optional_fields ~w(filial site facebook twitter instagram)
 
   @doc """

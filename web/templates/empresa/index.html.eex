@@ -20,7 +20,7 @@
   <tbody>
 <%= for empresa <- @empresas do %>
     <tr>
-      <td><%= empresa.nome %></td>
+      <td><%= empresa.nome %> <a href="<%= empresa_path(@conn, :show, empresa) %>" class="ui circular icon button"><i class="unhide icon"></i></a></td>
       <td><%= link empresa.segmento.nome, to: segmento_path(@conn, :show, empresa.segmento), class: "ui basic  large label" %></td>
       <td>
         <%= if(empresa.status_pesquisa == "iniciada") do %>
