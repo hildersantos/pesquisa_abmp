@@ -9,7 +9,7 @@ defmodule PesquisaABMP.SegmentoController do
   plug :scrub_params, "segmento" when action in [:create, :update]
 
   def index(conn, _params) do
-    segmentos = Repo.all(Segmento) |> Repo.preload(:questionario)
+    segmentos = Repo.all(from s in Segmento, order_by: s.nome) |> Repo.preload(:questionario)
     render(conn, "index.html", segmentos: segmentos)
   end
 
