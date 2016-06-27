@@ -2,6 +2,7 @@ defmodule PesquisaABMP.EmpresaController do
   use PesquisaABMP.Web, :controller
 
   alias PesquisaABMP.Empresa
+  alias PesquisaABMP.EmpresaResposta
 
   plug :authenticate
   plug :only_admins
@@ -32,7 +33,10 @@ defmodule PesquisaABMP.EmpresaController do
 
   def show(conn, %{"id" => id}) do
     empresa = Repo.get!(Empresa, id) |> Repo.preload(:cidade) |> Repo.preload(:segmento) |> Repo.preload(dados_empresa: [:cidade, :segmento])
-    render(conn, "show.html", empresa: empresa)
+    empresa_query = from e in Empresa,
+      where: e.id == ^id
+    questionario = empresa_query |> Empresa.get_questionario |> Repo.one
+    render(conn, "show.html", empresa: empresa, questionario: questionario)
   end
 
   def edit(conn, %{"id" => id}) do

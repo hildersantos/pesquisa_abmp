@@ -57,4 +57,24 @@ defmodule PesquisaABMP.Empresa do
     end
   end
 
+  def get_questionario(query) do
+    empresa = PesquisaABMP.Repo.one(query) |> PesquisaABMP.Repo.preload(segmento: :questionario)
+
+    respostas_query = from er in PesquisaABMP.EmpresaResposta,
+      where: er.empresa_id == ^empresa.id,
+      select: er.resposta_id
+
+    respostas_id = respostas_query |> PesquisaABMP.Repo.all
+
+    questionario = from q in PesquisaABMP.Questionario,
+      where: q.id == ^empresa.segmento.questionario.id
+
+    from q in questionario,
+      join: p in assoc(q, :perguntas),
+      join: r in assoc(p, :respostas),
+      where: r.id in ^respostas_id,
+      join: er in assoc(r, :empresas_respostas),
+      where: er.empresa_id == ^empresa.id,
+      preload: [perguntas: {p, [respostas: {r, empresas_respostas: er}]}]
+  end
 end

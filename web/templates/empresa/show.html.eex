@@ -131,9 +131,47 @@
             <strong>Tempo de Atividade:</strong> <%=  @empresa.dados_empresa.tempo_atividade %> anos
           </p>
         </div>
+          <div class="ui segment">
+          <h5 class="ui header">
+            <div class="content">
+              Respostas ao questionário
+              <div class="sub header">
+                Dados respondidos na pesquisa, pela empresa
+              </div>
+            </div>
+          </h5>
+          <div class="ui divider"></div>
 
+            <p>
+              <strong>Questionário respondido: </strong> <%= @questionario.nome %>
+            </p>
+            <%= for pergunta <- @questionario.perguntas do  %>
+              <div class="ui segments">
+                <div class="ui segment blue inverted">
+                  <strong>
+                    <%= pergunta.pergunta %>
+                  </strong>
+                </div>
+                <div class="ui segment">
+                  <%= for resposta <- pergunta.respostas do %>
+                    <p>
+                      <strong><%= resposta.resposta %></strong>
+                      <%= for replica <-  resposta.empresas_respostas do %>
+                        <%= unless(is_nil(replica.replica)) do %>
+                         : <%= replica.replica %>
+                        <% end %>
+                      <% end %>
+                    </p>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+        </div>
         <% end %>
     </div>
+
+
+
     <div class="ui segment">
       <%= link "Editar", to: empresa_path(@conn, :edit, @empresa), class: "ui primary large button" %>
     </div>
