@@ -1,2 +1,2 @@
-webpack -p
+node ./node_modules/webpack/bin/webpack.js -p
 mix phoenix.digest
