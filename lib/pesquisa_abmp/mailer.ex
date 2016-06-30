@@ -28,7 +28,22 @@ defmodule PesquisaABMP.Mailer do
       subject: "Sua solicitação de senha - Pesquisa ABMP",
       text: reset_email_text(empresa, senha),
       html: Phoenix.View.render_to_string(PesquisaABMP.EmailView, "reset_password.html", %{empresa: empresa, senha: senha})
+  end
 
+  defp finished_survey_email_text(empresa) do
+    """
+    A empresa #{empresa.nome} acabou de concluir a pesquisa no sistema.
+
+    Você pode conferir os dados da pesquisa concluída no painel administrativo.
+    """
+  end
+
+  def finished_survey_email(conn, empresa) do
+    send_email to: System.get_env("NOTIFICATION_EMAIL"),
+      from: @sender,
+      subject: "Pesquisa concluída - #{empresa.nome}",
+      text: finished_survey_email_text(empresa),
+      html: Phoenix.View.render_to_string(PesquisaABMP.EmailView, "finished_survey.html", %{empresa: empresa, conn: conn})
   end
 
 

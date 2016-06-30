@@ -117,7 +117,6 @@ if (document.getElementById('pesquisa')) {
           this.$set('ui.botaoenvio', 'Registrando pesquisa, aguarde...')
           axios.post('/api/empresas_respostas/responses', data)
               .then((response) => {
-                console.log(response)
                 window.location = window.location.protocol + '//' + window.location.hostname + (window.location.port ? ':'+window.location.port : '') + '/final'
               })
               .catch((response) => {

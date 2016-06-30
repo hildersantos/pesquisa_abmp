@@ -35,6 +35,8 @@ defmodule PesquisaABMP.EmpresaRespostaController do
     case empresas_respostas_params |> Enum.each(&(Repo.insert_or_update!(EmpresaResposta.changeset(%EmpresaResposta{}, &1)))) do
       :ok ->
         user |> PesquisaABMP.Empresa.changeset(%{"status_pesquisa" => "concluida"}) |> Repo.update!
+        # Disparo um email pra ABMP informando que a pesquisa foi concluída
+        PesquisaABMP.Mailer.finished_survey_email(conn, user)
 
         conn
         |> put_status(:created)
