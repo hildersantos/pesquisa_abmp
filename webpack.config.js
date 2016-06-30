@@ -4,6 +4,7 @@ var LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 var webpack = require('webpack');
 
 module.exports = {
+    devtool: 'cheap-module-source-map',
     entry: ["./web/static/js/app.js", "./web/static/css/app.sass"],
     output: {
         path: "./priv/static",
@@ -48,6 +49,16 @@ module.exports = {
         new webpack.ProvidePlugin({
             $: "jquery",
             jQuery: "jquery"
+        }),
+        new webpack.DefinePlugin({
+            'process.env': {
+                NODE_ENV: '"production"'
+            }
+        }),
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: true
+            }
         })
     ],
     resolve: {
