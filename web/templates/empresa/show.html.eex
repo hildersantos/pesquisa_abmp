@@ -12,10 +12,11 @@
             <strong>Nome:</strong> <%= @empresa.nome %>
         </p>
         <p>
-            <strong>Nome de usuário:</strong> <%= @empresa.username %>
+          <strong>Nome de usuário:</strong> <%= username = @empresa.username %>
+          <a class="ui medium label bt-reset-password" data-username="<%= @empresa.username %>" href="javascript:void(0)">Gerar nova senha</a>
         </p>
         <p>
-            <strong>Segmento:</strong> <%= @empresa.segmento.nome %> <%= link "Visualizar Segmento", to: segmento_path(@conn, :show, @empresa.segmento), class: "ui label" %>
+            <strong>Segmento:</strong> <%= @empresa.segmento.nome %>
         </p>
         <p>
             <strong>Endereço:</strong> <%= @empresa.endereco %>

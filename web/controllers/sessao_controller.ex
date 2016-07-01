@@ -26,22 +26,8 @@ defmodule PesquisaABMP.SessaoController do
 
   def reset_password_handler(conn, %{"reset_password" => %{"username" => username}}) do
     unless is_nil(username) do
-      empresa = Repo.get_by(PesquisaABMP.Empresa, [username: username])
 
-      case empresa do
-        nil ->
-          nil
-        empresa ->
-          new_pass = :crypto.strong_rand_bytes(8) |> Base.encode64 |> binary_part(0, 8)
-          changeset = PesquisaABMP.Empresa.changeset(empresa, %{password: new_pass})
-
-          case Repo.update(changeset) do
-            {:ok, empresa} ->
-              PesquisaABMP.Mailer.send_reset_email(empresa, new_pass)
-            {:error, _} ->
-              nil
-          end
-      end
+      reset_password_by_username(username)
 
       conn
       |> put_flash(:info, "Se o nome de usuário '#{username}' corresponder a um usuário cadastrado, você receberá um email contendo informações de como fazer login no sistema. Por favor, confira seu email, incluindo a caixa de spam.")
@@ -50,6 +36,38 @@ defmodule PesquisaABMP.SessaoController do
     conn
     |> put_flash(:error, "Insira um nome de usuário")
     |> render("reset.html")
+    end
+  end
+
+  def reset_password_ajax(conn, %{"username" => username}) do
+    case reset_password_by_username(username) do
+      :ok ->
+        conn
+        |> put_status(:ok)
+        |> json(%{status: "ok"})
+      :error ->
+        conn
+        |> put_status(:bad_request)
+        |> json(%{status: "error"})
+    end
+  end
+
+  defp reset_password_by_username(username) do
+    empresa = Repo.get_by(PesquisaABMP.Empresa, [username: username])
+    case empresa do
+      nil ->
+        :error
+      empresa ->
+        new_pass = :crypto.strong_rand_bytes(8) |> Base.encode64 |> binary_part(0, 8)
+        changeset = PesquisaABMP.Empresa.changeset(empresa, %{password: new_pass})
+
+        case Repo.update(changeset) do
+          {:ok, empresa} ->
+            PesquisaABMP.Mailer.send_reset_email(empresa, new_pass)
+            :ok
+          {:error, _} ->
+            :error
+        end
     end
   end
 

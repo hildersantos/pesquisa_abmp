@@ -47,5 +47,6 @@ defmodule PesquisaABMP.Router do
     resources "/empresas_respostas", EmpresaRespostaController, except: [:new, :edit]
     post "/empresas_respostas/responses", EmpresaRespostaController, :create_all
     get "/empresas/:id/questionario", QuestionarioController, :questionario_empresa
+    post "/reset_password", SessaoController, :reset_password_ajax
   end
 end

@@ -1,5 +1,5 @@
 import 'phoenix_html'
-import { Socket } from 'phoenix'
+import 'phoenix'
 import 'semantic'
 import Vue from 'vue'
 const axios = require('axios')
@@ -138,6 +138,24 @@ if (document.getElementById('pesquisa')) {
 }
 
 jQuery(function($) {
+
+  $('.bt-reset-password').click( (e) => {
+    let $btn = $(e.target)
+    e.preventDefault()
+
+    if(confirm("Uma nova senha será criada e enviada por email para o cliente, deixando qualquer senha anteriormente criada inutilizável. Confirma a criação de uma nova senha?")) {
+      $btn.removeClass('bt-reset-password').text("Aguarde, gerando nova senha...")
+      axios.post('/api/reset_password', {username: $btn.data('username') })
+        .then((response) => {
+          $btn.addClass("green").removeClass('bt-reset-password').text("Senha gerada e enviada")
+        })
+        .catch((response) => {
+          $btn.addClass("red").addClass('bt-reset-password').text("Erro ao gerar senha")
+        })
+    }
+
+  })
+
   if($('#pesquisa').length) {
     $('.ui.form.pesquisa-form').form({
       fields: {
