@@ -143,14 +143,14 @@ jQuery(function($) {
     let $btn = $(e.target)
     e.preventDefault()
 
-    if(confirm("Uma nova senha será criada e enviada por email para o cliente, deixando qualquer senha anteriormente criada inutilizável. Confirma a criação de uma nova senha?")) {
-      $btn.removeClass('bt-reset-password').text("Aguarde, gerando nova senha...")
+    if(!$btn.hasClass("is-processing") && !$btn.hasClass("finished") && confirm("Uma nova senha será criada e enviada por email para o cliente, deixando qualquer senha anteriormente criada inutilizável. Confirma a criação de uma nova senha?")) {
+      $btn.addClass('is-processing').text("Aguarde, gerando nova senha...")
       axios.post('/api/reset_password', {username: $btn.data('username') })
         .then((response) => {
-          $btn.addClass("green").removeClass('bt-reset-password').text("Senha gerada e enviada")
+          $btn.addClass("green").addClass("finished").text("Senha gerada e enviada")
         })
         .catch((response) => {
-          $btn.addClass("red").addClass('bt-reset-password').text("Erro ao gerar senha")
+          $btn.addClass("red").removeClass("is-processing").text("Erro ao gerar senha")
         })
     }
 
