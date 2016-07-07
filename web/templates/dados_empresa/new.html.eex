@@ -1,7 +1,32 @@
 <div class="ui container">
+  <div class="ui two ordered steps">
+    <div class="active step">
+      <div class="content">
+        <div class="title">
+          Primeira Etapa
+        </div>
+        <div class="description">
+          Dados sua empresa
+        </div>
+      </div>
+    </div>
+    <div class="disabled step">
+      <div class="content">
+        <div class="title">
+          Segunda Etapa
+        </div>
+        <div class="description">
+          Pesquisa Mercadológica
+        </div>
+      </div>
+    </div>
+  </div>
   <h2 class="ui header">Preencha os dados abaixo</h2>
 
   <%= render "form.html", changeset: @changeset,
   action: dados_empresa_path(@conn, :create), tipos_empresas: @tipos_empresas %>
 
+  <br/>
+  <br/>
+  <br/>
 </div>

@@ -2,6 +2,36 @@
  empresa_id = <%= @empresa.id %>;
 </script>
 <div class="ui container pesquisa" id="pesquisa">
+<div class="ui two ordered steps">
+    <div class="completed step">
+      <div class="content">
+        <div class="title">
+          Primeira Etapa
+        </div>
+        <div class="description">
+          Dados da sua empresa
+        </div>
+      </div>
+    </div>
+    <div class="active step">
+      <div class="content">
+        <div class="title">
+          Segunda Etapa
+        </div>
+        <div class="description">
+          Pesquisa Mercadológica
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+   if (navigator.appName == 'Microsoft Internet Explorer' ||  !!(navigator.userAgent.match(/Trident/) || navigator.userAgent.match(/rv 11/)))
+{
+     alert("Este questionário apresenta algumas incompatibilidades conhecidas com o navegador que você está utilizando (Internet Explorer). Por gentileza, caso não consiga visualizar as perguntas, abra o endereço da pesquisa em outro navegador (como Chrome, Firefox ou Opera) e tente novamente. Se o problema persistir, entre em contato conosco.")
+}
+  </script>
+
+
     <div class="ui segments">
         <div class="ui segment blue inverted">
           <h2 class="ui header">Pesquisa</h2>

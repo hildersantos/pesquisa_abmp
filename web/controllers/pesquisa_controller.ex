@@ -2,21 +2,20 @@ defmodule PesquisaABMP.PesquisaController do
   use PesquisaABMP.Web, :controller
 
   def index(conn, _params, empresa) do
-    if(empresa.status_pesquisa !== "iniciada" && empresa.status_pesquisa !== "concluida") do
-      conn
-      |> put_flash(:error, "Você precisa preencher estes dados primeiro")
-      |> redirect(to: dados_empresa_path(conn, :new))
-      |> halt()
+    case empresa.status_pesquisa do
+      "concluida" ->
+        conn
+        |> put_flash(:info, "Sua pesquisa já foi respondida. Obrigado!")
+        |> redirect(to: page_path(conn, :final))
+        |> halt()
+      "iniciada" ->
+        render conn, "index.html", empresa: empresa
+      _ ->
+        conn
+        |> put_flash(:error, "Você precisa preencher estes dados primeiro")
+        |> redirect(to: dados_empresa_path(conn, :new))
+        |> halt()
     end
-
-    if(empresa.status_pesquisa === "concluida") do
-      conn
-      |> put_flash(:info, "Sua pesquisa já foi respondida. Obrigado!")
-      |> redirect(to: page_path(conn, :final))
-      |> halt()
-    end
-
-    render conn, "index.html", empresa: empresa
   end
 
   def action(conn, _) do

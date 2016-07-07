@@ -102,6 +102,6 @@
   </div>
 
   <div class="field">
-    <%= submit "Enviar e continuar", class: "ui button primary large" %>
+    <%= submit "Seguir para a próxima etapa", class: "ui button primary large" %>
   </div>
 <% end %>

@@ -16,21 +16,20 @@ defmodule PesquisaABMP.DadosEmpresaController do
   end
 
   def new(conn, _params, user) do
-    if(user.status_pesquisa === "iniciada") do
-      conn
-      |> redirect(to: pesquisa_path(conn, :index))
-      |> halt()
+    case user.status_pesquisa do
+      "iniciada" ->
+        conn
+        |> redirect(to: pesquisa_path(conn, :index))
+        |> halt()
+      "concluida" ->
+        conn
+        |> put_flash(:info, "Sua pesquisa já foi respondida. Obrigado!")
+        |> redirect(to: page_path(conn, :final))
+        |> halt()
+      _ ->
+        changeset = user |> build_assoc(:dados_empresa) |> DadosEmpresa.changeset
+        render(conn, "new.html", changeset: changeset)
     end
-
-    if(user.status_pesquisa === "concluida") do
-      conn
-      |> put_flash(:info, "Sua pesquisa já foi respondida. Obrigado!")
-      |> redirect(to: page_path(conn, :final))
-      |> halt()
-    end
-
-    changeset = user |> build_assoc(:dados_empresa) |> DadosEmpresa.changeset
-    render(conn, "new.html", changeset: changeset)
   end
 
   def create(conn, %{"dados_empresa" => dados_empresa_params}, user) do

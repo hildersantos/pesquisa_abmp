@@ -36,6 +36,7 @@ defmodule PesquisaABMP.Mixfile do
      {:phoenix_html, "~> 2.4"},
      {:comeonin, "~> 2.4"},
      {:phoenix_live_reload, "~> 1.0", only: :dev},
+     {:sshex, "2.1.0", only: :dev},
      {:logger_file_backend, "~> 0.0.8"},
      {:gettext, "~> 0.9"},
      {:scrivener, "~> 1.0"},
