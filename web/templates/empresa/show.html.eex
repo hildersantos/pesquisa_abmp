@@ -65,7 +65,7 @@
         <%= if(is_nil(@empresa.status_pesquisa)) do %>
             <div class="ui grey label">Não iniciada</div>
         <% end %>
-        <%= if(@empresa.status_pesquisa === "concluida") do %>
+        <%= if(@empresa.status_pesquisa === "iniciada" || @empresa.status_pesquisa === "concluida") do %>
         <div class="ui divider">
 
         </div>
@@ -132,7 +132,9 @@
             <strong>Tempo de Atividade:</strong> <%=  @empresa.dados_empresa.tempo_atividade %> anos
           </p>
         </div>
+        <% end %>
 
+        <%= if(@empresa.status_pesquisa === "concluida") do %>
           <div class="ui segment">
           <h5 class="ui header">
             <div class="content">
