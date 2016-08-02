@@ -1,7 +1,7 @@
 defmodule PesquisaABMP.Mailer do
-  use Mailgun.Client,
-    domain: Application.get_env(:pesquisa_abmp, :mailgun_domain),
+  @conf domain: Application.get_env(:pesquisa_abmp, :mailgun_domain),
     key: Application.get_env(:pesquisa_abmp, :mailgun_key)
+  use Mailgun.Client, @conf
 
   @sender "pesquisa@pesquisaabmp.com.br"
 
