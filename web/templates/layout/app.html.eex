@@ -25,7 +25,7 @@
                     <%= if @current_user.is_admin do %>
                     <div class="ui buttons">
                       <%= link("Visualizar/Cadastrar Empresas", to: empresa_path(@conn, :index), class: "ui positive button") %>
-                      <%= link("Relatórios", to: relatorio_path(@conn, :index), class: "ui orange button") %>
+                      <%# link("Relatórios", to: relatorio_path(@conn, :index), class: "ui orange button") %>
                     </div>
                     <%= end %>
                       <%= link("Logout", to: sessao_path(@conn, :delete, @current_user), method: "delete", class: "ui primary button btn-login") %>
