@@ -1,2 +1,6 @@
+info "Instalando gulp globalmente..."
+npm install -g gulp
+info "Iniciando o webpack..."
 node ./node_modules/webpack/bin/webpack.js -p
+info "Rodando o phoenix.digest..."
 mix phoenix.digest
