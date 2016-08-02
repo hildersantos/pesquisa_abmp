@@ -1,0 +1,26 @@
+<div class="ui container">
+  <div class="ui header">
+    Relatórios - Dados da Empresa
+  </div>
+  <div class="ui segment">
+    <%= render "form.html", dados_empresas: @dados_empresas, action: relatorio_path(@conn, :index), changeset: @changeset, segmentos: @segmentos %>
+  </div>
+  <div class="ui segments">
+    <%= for empresa <- @dados_empresas do %>
+      <%= if(empresa.count_total > 1) do %>
+    <div class="ui segment">
+      <h3 class="ui header">Porcentagens</h3>
+      <ul class="ui list">
+        <li><strong>Facebook:</strong> <%= div(empresa.count_facebook * 100, empresa.count_total)  %> %</li>
+        <li><strong>Twitter:</strong> <%= div(empresa.count_twitter * 100, empresa.count_total)  %> %</li>
+        <li><strong>Instagram:</strong> <%= div(empresa.count_instagram * 100, empresa.count_total)  %> %</li>
+      </ul>
+    </div>
+      <%= else %>
+    <div class="ui segment">
+      <h3>Nenhum dado para exibir</h3>
+    </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

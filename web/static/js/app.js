@@ -7,6 +7,10 @@ import _ from 'lodash'
 import 'datatables.net'
 import '../vendor/datatables/datables.semanticui'
 
+var Turbolinks = require("turbolinks")
+
+Turbolinks.start()
+
 // Criação de Questionário
 if (document.getElementById('root')) {
   const app = new Vue({

@@ -36,4 +36,20 @@ defmodule PesquisaABMP.DadosEmpresa do
     model
     |> cast(params, @required_fields, @optional_fields)
   end
+
+  def filter_by_segment(query, segmento_id) do
+    from de in query,
+      where: de.segmento_id == ^segmento_id
+  end
+
+  def grand_total(query) do
+    from de in query,
+      select: %{count_total: count(de.id),
+                count_facebook: count(de.facebook),
+                count_twitter: count(de.twitter),
+                count_instagram: count(de.instagram),
+                count_filial: count(de.filial)
+      }
+  end
+
 end

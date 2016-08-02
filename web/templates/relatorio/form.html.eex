@@ -1,0 +1,11 @@
+<%= form_for @changeset, @action, [class: "ui form", method: "get"], fn f -> %>
+  <div class="field">
+    <%= label f, :segmento_id, "Segmentos", class: "control-label" %>
+    <%= select f, :segmento_id, @segmentos, prompt: "Escolha uma das opções"  %>
+    <%= error_tag f, :segmento_id %>
+  </div>
+
+  <div class="field">
+    <%= submit "Enviar", class: "ui button primary large" %>
+  </div>
+<% end %>

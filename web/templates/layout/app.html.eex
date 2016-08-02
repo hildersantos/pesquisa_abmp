@@ -21,14 +21,17 @@
           </div>
           <div class="right menu">
               <div class="item">
-                <%= if @current_user do %>
-                  <%= if @current_user.is_admin do %>
-                    <%= link("Visualizar/Cadastrar Empresas", to: empresa_path(@conn, :index), class: "ui positive button") %>
-                  <%= end %>
-                    <%= link("Logout", to: sessao_path(@conn, :delete, @current_user), method: "delete", class: "ui primary button btn-login") %>
-                <% else %>
-                    <%= link("Login", to: "/sessoes/new", class: "ui primary button btn-login") %>
-                <% end %>
+                  <%= if @current_user do %>
+                    <%= if @current_user.is_admin do %>
+                    <div class="ui buttons">
+                      <%= link("Visualizar/Cadastrar Empresas", to: empresa_path(@conn, :index), class: "ui positive button") %>
+                      <%= link("Relatórios", to: relatorio_path(@conn, :index), class: "ui orange button") %>
+                    </div>
+                    <%= end %>
+                      <%= link("Logout", to: sessao_path(@conn, :delete, @current_user), method: "delete", class: "ui primary button btn-login") %>
+                  <% else %>
+                      <%= link("Login", to: "/sessoes/new", class: "ui primary button btn-login") %>
+                  <% end %>
               </div>
           </div>
       </div>

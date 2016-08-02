@@ -23,4 +23,8 @@ defmodule PesquisaABMP.Segmento do
     model
     |> cast(params, @required_fields, @optional_fields)
   end
+
+  def names_and_ids(query) do
+    from t in query, select: {t.nome, t.id}
+  end
 end

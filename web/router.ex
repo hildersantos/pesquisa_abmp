@@ -31,6 +31,9 @@ defmodule PesquisaABMP.Router do
     resources "/cidades", CidadeController
     resources "/segmentos", SegmentoController
     resources "/questionarios", QuestionarioController, only: [:new, :edit]
+    # Relatórios
+
+    get "/relatorios", RelatorioController, :index
   end
 
   scope "/csv", PesquisaABMP do
